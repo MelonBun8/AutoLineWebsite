@@ -8,6 +8,5 @@ A simple business website for a Local car dealership
 - About Page
 - Contact us page (Inspiration: https://images01.nicepagecdn.com/page/28/82/website-design-preview-2882096.jpg )
 - Reserve a consultancy + sell your car (2 features in one dashboard in one page) (Inspiration: https://blog.hubspot.com/hs-fs/hubfs/help-scout.jpg?width=650&name=help-scout.jpg)
-- View Available Cars
-- 
+- Cars Spotlight
 - // Login / Sign Up  Not immediate //
