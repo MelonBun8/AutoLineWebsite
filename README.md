@@ -1,6 +1,7 @@
 # AutoLineWebsite
 A simple business website for a Local car dealership
 
+## Features
 - Landing Page Inspirations Below:
 - https://www.frontendpractice.com/_next/image?url=%2Ffullsize%2FC3-Monogram.png&w=1200&q=90
 - https://www.frontendpractice.com/_next/image?url=%2Ffullsize%2FC2-lobe.png&w=1200&q=90
