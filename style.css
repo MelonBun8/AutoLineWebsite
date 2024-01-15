@@ -1,0 +1,136 @@
+body{
+    margin: 0;
+    border: 0;
+    padding:0;
+    width:100vw;
+    overflow-x:hidden;
+    display:block;
+}
+/* header stuff START */
+
+header{
+    width: 100vw;
+    display:block;
+    background-image: url("Showroom.png");
+    height:900px;
+    background-size: cover;
+    float:none;
+}
+
+#headingPart{
+    width:100vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.headerSection{
+    width:90vw;
+    display:flex;
+    height:60px;
+    background-color: #46c768;
+    align-items: center;
+    margin-top: 1em;
+    border-radius: 6px;
+}
+
+#leftHeaderSection{
+    display:flex;
+    height:100px;
+    width: 45vw;
+    align-items: center;
+    
+}
+
+#leftHeaderSection img{
+    width:250px;
+    height: 45px;
+    padding-left: 20px;
+}
+
+#rightHeaderSection{
+    display:flex;
+    height:60px;
+    width: 50vw;
+    justify-content: right;
+    align-items: center;
+}
+
+video{
+    object-fit: fill;
+    border:1px solid #46c768;
+}
+#rightHeaderSection button:hover{
+    background-color: white;
+    color:#46c768;
+}
+
+#rightHeaderSection button{
+    height:25px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    color: white;
+    margin-left: 15px;
+    margin-right:20px;
+    background-color: #46c768;
+    border: 0;
+    font-family: 'Bruno Ace', sans-serif;
+}
+
+.landingHeading{
+    display:flex;
+    color: white;
+    font-size: 3em;
+    justify-content: center;
+    margin-top: 10px;
+    font-family: 'Racing Sans One', sans-serif;
+}
+
+.landingVideo{
+    display: flex;
+    width:100vw;
+    height:405px; 
+    justify-content: center;
+}
+
+/* Header Stuff END */
+main{
+    height:100px;
+    background-color: white;
+    display:block;
+    width:100vw;
+}
+/* Body Stuff BEGIN */
+
+.landingCatalogHeading{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    font-size: 3em;
+    font-family: 'Racing Sans One', sans-serif;
+    color: #46c768;
+}
+
+
+.landingGridHolder{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+}
+.landingCatalogGrid{
+    width:90%;
+    display: grid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid green;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.landingCatalogGrid img{
+    width:300px;
+
+}
