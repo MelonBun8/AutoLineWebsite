@@ -119,18 +119,51 @@ main{
     width:100vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .landingCatalogGrid{
     width:90%;
     display: grid;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid green;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    justify-content: center;
 }
 
 .landingCatalogGrid img{
-    width:300px;
-
+    margin-top: 10px;
+    width:42vw;
+    height:23.63vw;
+    margin-bottom: 10px;
+    filter: brightness(50%);
 }
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color:white;
+}
+
+.box:hover{
+    color:#46c768;   
+    filter: brightness(100%);
+}
+
+.box img:hover{
+    filter:brightness(100%);
+}
+
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Racing Sans One', sans-serif;
+    font-size: 70px;
+}
+
+
