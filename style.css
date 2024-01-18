@@ -11,7 +11,7 @@ body{
 header{
     width: 100vw;
     display:block;
-    background-image: url("Showroom.png");
+    background-image: url("images/Showroom.png");
     height:900px;
     background-size: cover;
     float:none;
@@ -62,6 +62,7 @@ video{
 }
 #rightHeaderSection button:hover{
     background-color: white;
+    cursor: pointer;
     color:#46c768;
 }
 
@@ -151,10 +152,12 @@ main{
 .box:hover{
     color:#46c768;   
     filter: brightness(100%);
+    cursor: pointer;
 }
 
 .box img:hover{
     filter:brightness(100%);
+    cursor: pointer;
 }
 
 .centered{

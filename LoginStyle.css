@@ -1,0 +1,167 @@
+:root{
+    --theme-green: #46c768;
+}
+
+body{
+    margin: 0;
+    border: 0;
+    padding:0;
+    width:100vw;
+    overflow-x:hidden;
+    display:block;
+}
+
+header{
+    width: 100vw;
+    display:block;
+    background-image: url("images/SignInBackground.jpg");
+    height:900px;
+    background-size: cover;
+    float:none;
+}
+
+#headingPart{
+    width:100vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.headerSection{
+    width:90vw;
+    display:flex;
+    height:60px;
+    background-color: var(--theme-green); /*Used the variable color*/
+    border:5px inset darkgreen;
+    align-items: center;
+    margin-top: 1em;
+    border-radius: 6px;
+}
+
+#leftHeaderSection{
+    display:flex;
+    height:100px;
+    width: 45vw;
+    align-items: center;
+    
+}
+
+#leftHeaderSection img{
+    width:250px;
+    height: 45px;
+    padding-left: 20px;
+}
+
+#rightHeaderSection{
+    display:flex;
+    height:60px;
+    width: 50vw;
+    justify-content: right;
+    align-items: center;
+}
+
+#rightHeaderSection button:hover{
+    background-color: white;
+    cursor: pointer;
+    color:#46c768;
+}
+
+#rightHeaderSection button{
+    height:25px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    color: white;
+    margin-left: 15px;
+    margin-right:20px;
+    background-color: #46c768;
+    border: 0;
+    font-family: 'Bruno Ace', sans-serif;
+}
+
+/* body STUFF START */
+
+.mainContainer{
+    display:flex;
+    width:100vw;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.LogInImageandForm{
+    width:80%;
+    display:grid;
+    border-radius: 20px;
+    margin:auto;
+    border:10px solid darkgreen;
+    grid-template-columns: 1fr 1fr;
+    justify-content: right;
+    align-items: center;
+}
+
+.leftImage{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftImage img{
+    height:100%;
+    width:100%;
+    object-fit: fill;
+}
+
+.signingForm{
+    width:100%;
+    background-color: white;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    display: grid;
+    height:100%;
+    grid-template-rows: 15% 85%;
+    font-family: 'Bruno Ace', sans-serif;
+
+}
+
+/*tabs stuff*/
+
+.tabs{
+    width:100%;
+    align-items: center;
+    color:var(--theme-green);
+}
+
+.tabs .container{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height:100%
+}
+
+.tabs .container > div{
+    padding-top: 15%;
+    height:100%;
+}
+
+.tabs p{
+    font-size: 14px;
+}
+
+.tabs .container > div:hover{
+    cursor:pointer;
+    background-color: #46c768;
+    color: whitesmoke;
+}
+
+
+.tabContentItem{
+    background-color: whitesmoke;
+    height:100%;
+}
+
+/*tabs stuff END */
