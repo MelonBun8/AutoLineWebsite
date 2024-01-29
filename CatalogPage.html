@@ -1,1 +1,81 @@
-<h1>CatalogPage</h1>
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset = "UTF-8"> <!-- These things like charset in the opening tags are known as attributes-->
+        <meta name = "Description:" content = "Autoline Showroom Karachi | Official Website">
+        <title>
+            AutoLine Showroom | Catalogue
+        </title>
+		
+		<link rel="icon" href="images/favicon.png">
+        <!--including the link to the external css stylesheet -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+
+        <link href = "style.css", rel = "stylesheet">
+		<link href = "CatalogStyle.css", rel = "stylesheet">
+		
+    </head>
+
+
+    <body>
+
+
+        <header>
+
+            <div id = "headingPart">
+                <nav class = "headerSection">
+                    
+                    <div id = "leftHeaderSection">
+                        <img src = "images/LogoGreen.png" alt = "logo" title="Home Page" onClick="homepage()"/> 
+                    </div> 
+
+                    <div id = "rightHeaderSection">
+                        <button id = "butt1" type="button" onclick=openNewPage(2)>View Catalog</button>
+                        <button id = "butt2" type="button" onclick=openNewPage(3)>Get In Touch</button>
+                        <button id = "butt3" type="button" onclick=openNewPage(4)>Contact & About</button>
+                        <button id = "butt4" type="button" onclick=openNewPage(5)>Sign In / Up</button>
+                    </div>
+
+
+                </nav>
+            </div>
+
+            <div class = landingHeading>
+                <h1>Catalogue</h1>    
+            </div>
+
+        </header>
+		
+		<main class="main-content">
+			<section class="left-section">
+				section stuff here
+				<div> random buttons n stuff </div>
+				<div> random buttons n stuff </div>
+				<div> random buttons n stuff </div>
+				<div> random buttons n stuff </div>
+				<div> random buttons n stuff </div>
+				<div> random buttons n stuff </div>
+				
+			</section>
+			
+			<div class="catalogue-section">
+				main div catalogue stuff here
+				
+				<div> catalogue stuff</div>
+				<div> catalogue stuff</div>
+				<div> catalogue stuff</div>
+				<div> catalogue stuff</div>
+				<div> catalogue stuff</div>
+			</div>
+		</main>
+
+	<!--scripts go here-->
+	<script src="script.js"></script>
+
+    </body>
+
+
+</html>

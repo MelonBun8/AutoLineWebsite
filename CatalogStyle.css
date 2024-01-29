@@ -1,0 +1,26 @@
+// * {border: 1px solid black;}
+
+/* shared properties */
+
+section, .catalogue-section {
+	border: 1px solid black;
+	height: 100vw;
+}
+
+/* all properties */
+
+header {
+	background-image: none;
+}
+			
+.landingHeading h1 {
+	color: #222;
+}
+
+main {
+	display: inline-flex;
+}
+
+.catalogue-section {
+	
+}

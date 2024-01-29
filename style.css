@@ -40,13 +40,13 @@ header{
     height:100px;
     width: 45vw;
     align-items: center;
-    
 }
 
 #leftHeaderSection img{
-    width:250px;
+    width: 250px;
     height: 45px;
     padding-left: 20px;
+	cursor: pointer;
 }
 
 #rightHeaderSection{

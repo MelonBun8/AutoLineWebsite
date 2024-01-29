@@ -36,3 +36,6 @@ function selectItem(e){
 //listen for tab click
 tabItems.forEach( item => item.addEventListener('click', selectItem));
 
+function homepage() {
+	window.location.href = 'index.html';
+}
