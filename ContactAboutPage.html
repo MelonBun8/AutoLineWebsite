@@ -1,1 +1,91 @@
-<h1>Contact Us</h1>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+		-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		
+		<link href = "style.css", rel = "stylesheet">
+		<link href = "ContactStyle.css", rel = "stylesheet"/>
+	</head>
+		
+	<body>
+		
+        <header>
+
+            <div id = "headingPart">
+                <nav class = "headerSection">
+                    
+                    <div id = "leftHeaderSection">
+                        <img src = "images/LogoGreen.png" alt = "logo" title="Home Page" onClick="homepage()"/> 
+                    </div> 
+
+                    <div id = "rightHeaderSection">
+                        <button id = "butt1" type="button" onclick=openNewPage(2)>View Catalog</button>
+                        <button id = "butt2" type="button" onclick=openNewPage(3)>Get In Touch</button>
+                        <button id = "butt3" type="button" onclick=openNewPage(4)>Contact & About</button>
+                        <button id = "butt4" type="button" onclick=openNewPage(5)>Sign In / Up</button>
+                    </div>
+
+
+                </nav>
+            </div>
+
+            <div class = landingHeading>
+                <h1>Contact Us</h1>    
+            </div>
+
+        </header>
+		
+		
+		<div class="main-form-section">
+			<img src="images/chat.jpg"/>
+			
+				
+			<form>
+				<h2>Talk with us!</h2>
+				
+				<div class="form-column">
+					<div class="container">
+						<label for="fname">First name <span>*</span></label>
+						<input type="text" id="fname" name="fname" placeholder="Saad">
+					</div>
+					
+					<div class="container">
+						<label for="lname">Last name <span>*</span></label>
+						<input type="text" id="lname" name="lname" placeholder="Khan">
+					</div>
+				</div>
+				
+				<div class="form-column">
+					<div class="container">
+						<label for="email">Email </label>
+						<input type="email" id="email" name="email">
+					</div>
+					
+					<div class="container">
+						<label for="phnum">Phone Number <span>*</span></label>
+						<input type="text" id="phnum" name="phnum">
+					</div>
+				</div>
+				
+				<div class="no-flex">
+					<label for="discuss">What would you like to discuss?</label>
+					<input type="text" id="discuss" name="discuss" placeholder="I want to...">
+				</div>
+				
+			</form>
+
+		</div>
+
+    </body>
+
+
+</html>

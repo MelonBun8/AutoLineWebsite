@@ -1,0 +1,88 @@
+body {
+	width: 100vw;
+}
+
+header {
+	background-image: none;
+}
+
+.landingHeading h1 {
+	color: #222;
+}
+
+.main-form-section {
+	display: flex;
+}
+
+.main-form-section img {
+	width: 400px;
+	height: 266px;
+	margin-left: 10%;
+	align-content: center;
+	flex-grow: 0;
+	z-index: 1;
+	position: relative;
+	top: 150px;
+}
+
+form {
+    box-shadow: 0px 0px 40px 0px rgba(179,179,179,1);
+	background-color: #f8f8f8;
+	display: flex;
+    flex-direction: column;
+	min-height: 600px; /*remove this when done*/
+	padding: 10px 20px;
+}
+
+h1 {
+	font-size: 28px;
+	font-family: 'Racing Sans One', sans-serif;
+}
+
+.form-column {
+	display: flex;
+	flex: 0 0 100px;
+	
+}
+
+.container {
+	margin: 10px 10px;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;	//Add some spacing between form groups 
+	
+}
+
+label {
+	font-size: 18px;
+	font-family: 'Racing Sans One', sans-serif;
+	margin-bottom: 5px;
+}
+
+.no-flex {
+	padding: 30px 10px 10px 10px;
+}
+
+.no-flex input {
+	margin-top: 15px;
+	display: block;
+	width: 530px;
+	height: 100px;
+}
+
+#fname, #lname, #email, #phnum {
+	height: 30px;
+	width: 250px;
+	font-size: 18px;
+	//font-family: 'Roboto', sans-serif;
+}
+
+#discuss {
+	font-size: 18px;
+	//font-family: 'Roboto', sans-serif;
+}
+
+span {
+	color: darkorange;
+	
+}
