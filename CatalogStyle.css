@@ -1,10 +1,10 @@
-// * {border: 1px solid black;}
+ * {border: 1px solid black;}
 
 /* shared properties */
 
 section, .catalogue-section {
 	border: 1px solid black;
-	height: 100vw;
+	//height: 100vw;
 }
 
 /* all properties */
@@ -12,15 +12,85 @@ section, .catalogue-section {
 header {
 	background-image: none;
 }
-			
+
 .landingHeading h1 {
 	color: #222;
 }
 
-main {
-	display: inline-flex;
+.main-content {
+	display: flex;
 }
 
 .catalogue-section {
+	//max-width: 75vw;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+	align-content: center;
+}
+
+.top-display-toggle {
+	display: flex;
+    justify-content: flex-end;
+	grid-column: span 3;
+	width: 100%;
+}
+
+.top-display-toggle button img {
+	border: none;
+	width: 16px;
+	margin: 0;
+	font-size: 0;
+}
+
+.top-display-toggle button {
+	margin: 5px;
+	//padding: 5px 5px;
+	border-radius: 3px;
+	background: linear-gradient(to top, #46C768, #04AA6D);
+	cursor: pointer;
+}
+
+.top-display-toggle button:hover {
+	background: #04AA6D;
+}
+
+.top-display-toggle button:active {
+	background: linear-gradient(to top, #04AA6D, #46C768);
+}
+
+button[id='list'] {
+	border-radius: 3px 0px 0px 3px;
+	margin-right: 0px;
+}
+
+button[id='grid'] {
+	border-radius: 0px 3px 3px 0px;
+	margin-left: 0px;
+}
+
+.catalogue-item {
+	font-family: sans-serif;
+	width: 300px;
+	height: 350px;
+	margin: 10% 0%;
+	padding: 10px 10px;
+	background-color: #eee;
+	border: 2px solid transparent;
+}
+
+.catalogue-item:hover {
+	border-color: #46c768;
+	cursor: pointer;
+}
+
+/* this is too much!
+.catalogue-item:hover h3 {
+	color: #46c768;
+}
+*/
+
+.catalogue-item img {
+	width: 300px;
 	
 }
