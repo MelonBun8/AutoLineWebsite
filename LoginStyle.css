@@ -64,6 +64,7 @@ header{
     background-color: white;
     cursor: pointer;
     color:#46c768;
+    transition:all 0.3s ease;
 }
 
 #rightHeaderSection button{
@@ -123,15 +124,17 @@ header{
     height:100%;
     grid-template-rows: 15% 85%;
     font-family: 'Bruno Ace', sans-serif;
-
 }
 
 /*tabs stuff*/
 
 .tabs{
     width:100%;
+    height:100%;
     align-items: center;
     color:var(--theme-green);
+    padding:0;
+    margin: 0;
 }
 
 .tabs .container{
@@ -140,28 +143,207 @@ header{
     justify-content: center;
     text-align: center;
     align-items: center;
-    height:100%
-}
-
-.tabs .container > div{
-    padding-top: 15%;
     height:100%;
 }
 
-.tabs p{
-    font-size: 14px;
+.tab-item{
+    color:var(--theme-green);
 }
 
-.tabs .container > div:hover{
+.tabs .container button{
+    height:100%;
+    border:none;
+}
+
+.tabs .container > button:hover{
     cursor:pointer;
     background-color: #46c768;
     color: whitesmoke;
+    transition:all 0.3s ease;
+}
+
+.tab-item i{
+    margin-top:10%;
+}
+
+.tabContent{
+    padding:0;
+    background-color: white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabContentItem{
+    /*set max width later */
+    width:100%;
+    height:100%;
+}
+
+.form{
+    position:absolute;
+}
+
+.form.signup{
+    opacity:0;
+    pointer-events: none;
+}
+
+.forms.show-signup .form.signup{
+    opacity:1;
+    pointer-events: auto;
+}
+
+.forms.show-signup .form.login{
+    opacity:0;
+    pointer-events: auto;
+}
+
+.form login{
+    width:100%;
+}
+
+.formContent{
+    width:100%;
+    position:relative;
+}
+
+.form .field{
+    height:45px;
+    width:30vw;
+    margin-top: 5vh;
+    border-radius:6px;
+}
+.field input, .field button{
+    height:100%;
+    width:100%;
+    border:none;
+    font-size:16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.field input{
+    border:1px solid #CACACA;
+    outline:none;
+    padding-left:10px;
+}
+
+.field input:focus{
+    border-bottom-width: 4px;
+}
+
+.field button{
+    background: var(--theme-green);
+    color:white;
+}
+
+.field button:hover{
+    background: #46c768b2;
+    color:black;
+    cursor:pointer;
+    transition:all 0.3s ease;
 }
 
 
-.tabContentItem{
-    background-color: whitesmoke;
-    height:100%;
+.form-link{
+    text-align:center;
+    margin-top:10px;
+}
+
+.form-link span, .form-link a{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.form a{ /* make the links underlined only when hovered over*/
+    text-decoration: none;
+    color:var(--theme-green);
+}
+
+.formContent a:hover{
+    text-decoration: underline;
+    color:green;
+}
+
+.line{
+    height:1px;
+    width:100%;
+    background-color: black;
+    margin:36px 0;
+    position: relative;
+}
+
+.line::before{
+    content:'Or';
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background-color: white;
+    color:black;
+    padding:0 15px;
+}
+
+.media-options a{
+    display:flex;
+    background-color: #46c768;
+    align-items: center;
+    justify-content: center;
+}
+
+a.facebook{
+    color:white;
+    background-color: #4267b2;
+}
+
+a.google{
+    color:white;
+    background-color: #de5246;
+}
+
+a.facebook .facebook-icon{
+    display:flex;
+    font-size: 20px;
+    border-radius: 50%;
+    height:28px;
+    width:28px;
+    background-color: white;
+    color:#4267b2;
+    align-items: center;
+    justify-content: center;
+}
+
+a.google .google-icon{
+    display:flex;
+    font-size: 20px;
+    border-radius: 50%;
+    height:28px;
+    width:28px;
+    background-color: white;
+    color:#de5246;
+    align-items: center;
+    justify-content: center;
+}
+
+.facebook-icon{
+    position:relative;
+    right:20%;
+}
+
+.google-icon{   
+    position:relative;
+    right:22%;
+}
+
+#topMostField{
+    margin-top:0;
+}
+
+.signup .field{
+    height:5vh;
+    margin:0;
+    margin-top:3vh;
 }
 
 /*tabs stuff END */

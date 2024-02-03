@@ -7,6 +7,7 @@
         <title>
             AutoLine Showroom | Home Page
         </title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--To allow for boxicons on Signing forms-->
         <link rel="icon" href="images/favicon.png">
         <!--including the link to the external css stylesheet -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -58,38 +59,121 @@
 
                     <div class = signingForm>
 
-                        <section class = "tabs">
-                            <div class = "container" >
+                        <section class = "tabs"> <!-- this is there to be a container for the signing form grid-> -->
+                            <div class = "container"> <!--This is the grid for the 2 buttons for the grid, sign in and sign up-->
 
-                                <div id = "tab-1" class = "tab-item tab-border">
-                                    <!--<i class="fa-solid fa-clipboard" style="color: #46c768;"></i>-->
-                                    <i class="fa-solid fa-right-to-bracket fa-2xl"></i>
-                                    <p class="hide-sm">Sign In</p>
-                                </div>
+                                <BUTTON class = "link tab-item tab-border">
+                                        <!--<i class="fa-solid fa-clipboard" style="color: #46c768;"></i>-->
+                                        <i class="fa-solid fa-right-to-bracket fa-2xl"></i>
+                                        <p class="hide-sm">Log In</p>
+                                </BUTTON>
 
-                                <div id = "tab-2" class = "tab-item">
-                                    <i class="fa-solid fa-clipboard fa-2xl"></i>
-                                    <p class="hide-sm">Sign Up</p>
-                                </div>
+                                <BUTTON class = "link tab-item tab-border">
+                                        <i class="fa-solid fa-clipboard fa-2xl"></i>
+                                        <p class="hide-sm">Sign Up</p>
+                                </BUTTON>
                                 <!--NOTE: you can also use variables for colors eg: -->
 
                             </div>
                         </section>
 
-                        <section class = tabContent>
-                            <!--Tab Content 1-->
-                            <div id = "tabContent1" class = "tabContentItem show">
+                        <section class = "tabContent forms">
+
+                            <div class = "form login">
+                                <div class = "formContent">
+
+                                    <form action = "#"> <!--LOGIN FORM-->
+                                        <div class = "field input-field" id ="topMostField">
+                                            <input type = "email" placeholder = "example@xyz.com" class = "input">
+                                        </div>
+                                        <div class = "field input-field">
+                                                <input type = "password" placeholder = "password" class = "password">
+                                                <!--todo: add eye icon to toggle show and not show-->
+                                        </div>
+                                        <div class = "form-link">
+                                            <a href = "#" class = "forgot-pass">Forgot Password?</a>
+                                        </div>
+                                        <div class = "field button-field">
+                                            <button>Login</button>
+                                        </div>
+                                        
+                                    </form>
+                                
+                                <div class = "form-link">
+                                    <span>Not a member yet? <a href = "#" class = "link signupLink">Signup</a>
+                                </div>
+
+                                </div>
+
+                                <div class = "line"></div>
+
+                                <div class = "media-options">
+                                    <a href = "#" class = "field facebook">
+                                        <i class = "bx bxl-facebook facebook-icon"></i>
+                                        <span>Login with Facebook</span>
+                                    </a>
+                                    
+                                    <a href = "#" class = "field google">
+                                        <i class = "bx bxl-google google-icon"></i>
+                                        <span>Login with Google</span>
+                                    </a>
+
+                                </div>
 
                             </div>
 
-                            <div id = "tabContent2" class = "tabContentItem">
+                            <div class = "form signup">
+                                <div class = "formContent">
+
+                                    <form action = "#"> <!--SIGNUP FORM-->
+                                        <div class = "field input-field" id ="topMostField">
+                                            <input type = "email" placeholder = "example@xyz.com" class = "input">
+                                        </div>
+                                        <div class = "field input-field">
+                                                <input type = "password" placeholder = "password" class = "password">
+                                                <!--todo: add eye icon to toggle show and not show-->
+                                        </div>
+                                        <div class = "field input-field">
+                                            <input type = "password" placeholder = "password" class = "password">
+                                            <!--todo: add eye icon to toggle show and not show-->
+                                        </div>
+                                        <div class = "form-link">
+                                            <a href = "#" class = "forgot-pass">Forgot Password?</a>
+                                        </div>
+                                        <div class = "field button-field">
+                                            <button>Sign Up</button>
+                                        </div>
+                                        
+                                    </form>
                                 
+                                <div class = "form-link">
+                                    <span>Already a member? <a href = "#" class = "link loginLink">Log In</a>
+                                </div>
+
+                                </div>
+
+                                <div class = "line"></div>
+
+                                <div class = "media-options signupMedia">
+                                    <a href = "#" class = "field facebook">
+                                        <i class = "bx bxl-facebook facebook-icon"></i>
+                                        <span>Sign up with Facebook</span>
+                                    </a>
+                                    
+                                    <a href = "#" class = "field google">
+                                        <i class = "bx bxl-google google-icon"></i>
+                                        <span>Sign up with Google</span>
+                                    </a>
+
+                                </div>
+
                             </div>
 
                         </section>
 
 
-
+                        <!--Scripting-->
+                        <script src = "scriptSignup.js"></script>
 
                     </div>
 
