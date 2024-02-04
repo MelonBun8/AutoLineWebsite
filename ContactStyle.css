@@ -1,0 +1,164 @@
+:root{
+    --theme-green: #46c768;
+}
+
+body{
+    margin: 0;
+    border: 0;
+    padding:0;
+    width:100vw;
+    overflow-x:hidden;
+    display:block;
+}
+
+.aboutSection{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+}
+
+.aboutContainer{
+    width:80%;
+    background-color: #46c768;
+    border-radius: 10px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 0px;
+    padding: 30px;
+
+
+}
+
+.aboutContainer #CEOImageContainer{
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutContainer #CEOImageContainer img{
+    width:80%;
+}
+
+#aboutCompanyContainer{
+    background-color: rgb(43, 171, 21);
+    height:100%;
+    width:100%;
+    display:grid;
+    grid-template-rows: 10% 90%;  
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#aboutHeadingContainer{
+    display: flex;
+    width:100%;
+    justify-content:center;
+    text-align: center;
+}
+
+#aboutParagraphContainer{
+    display: flex;
+    width:100%;
+    justify-content:center;
+    text-align: center;
+}
+
+#aboutHeadingContainer h1{
+    margin-top: 5%;
+    width:100%;
+    font-family: 'Bruno Ace', sans-serif;
+    color:aliceblue;
+    font-size:30px;
+
+}
+
+.aboutContainer #aboutCompanyContainer p{
+    width:80%;
+    color:aliceblue;
+    font-family: 'Racing Sans One', sans-serif;
+    font-size:20px;
+    text-align: justify;
+
+}
+
+/* NEXT SECTION*/
+
+.mapAndContactSection{
+    /*temp*/
+    background-image: url("images/roads.png");
+    background-size: cover;
+    width:100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapAndContactContainer{
+    display:grid;
+    background-color: #46c768;
+    width:80%;
+    margin: 100px;
+    grid-template-rows: 1fr 0.5fr;
+    justify-content: center;
+}
+
+.mapContainer{
+    display:grid;
+    grid-template-rows: 15% 85%;
+    justify-content: center;
+    width:100%;
+    text-align: center;
+}
+
+.mapContainer iframe{
+    padding:20px 0;
+    width:70vw;
+    height:450px; 
+    border:0; 
+}
+
+.mapContainer h1{
+    font-size: 3rem;
+    color: aliceblue;
+    font-family: 'Racing Sans One', sans-serif;
+} 
+
+.contactContainers{
+    width:100%;
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.contactContainers i{
+    margin-right:20px;
+}
+
+.contactContainer{
+    display:flex;
+    height:100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-family: 'Bruno Ace', sans-serif;
+    color:whitesmoke;
+}
+
+#contactOne{
+    display:flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+#contactTwo{
+    display:flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+#contactThree{
+    display:flex;
+    align-items: center;
+}
