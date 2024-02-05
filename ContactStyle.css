@@ -32,6 +32,7 @@ form {
     flex-direction: column;
 	min-height: 600px; /*remove this when done*/
 	padding: 10px 20px;
+	margin-bottom: 50px;
 }
 
 h1 {
@@ -42,7 +43,6 @@ h1 {
 .form-column {
 	display: flex;
 	flex: 0 0 100px;
-	
 }
 
 .container {
@@ -50,24 +50,12 @@ h1 {
     display: flex;
 	flex-direction: column;
 	justify-content: center;	//Add some spacing between form groups 
-	
 }
 
-label {
+.form-column .container label {
 	font-size: 18px;
 	font-family: 'Racing Sans One', sans-serif;
 	margin-bottom: 5px;
-}
-
-.no-flex {
-	padding: 30px 10px 10px 10px;
-}
-
-.no-flex input {
-	margin-top: 15px;
-	display: block;
-	width: 530px;
-	height: 100px;
 }
 
 #fname, #lname, #email, #phnum {
@@ -77,12 +65,28 @@ label {
 	//font-family: 'Roboto', sans-serif;
 }
 
-#discuss {
-	font-size: 18px;
-	//font-family: 'Roboto', sans-serif;
+span {
+	color: darkorange;	
 }
 
-span {
-	color: darkorange;
-	
+.no-flex {
+	padding: 30px 10px 10px 10px;
 }
+
+.no-flex label {
+	font-size: 18px;
+	font-family: 'Racing Sans One', sans-serif;
+}
+
+.no-flex input {
+	margin-top: 15px;
+	display: block;
+	width: 530px;
+	height: 100px;
+}
+
+
+#discuss {
+	font-size: 18px;
+}
+

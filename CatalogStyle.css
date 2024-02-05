@@ -1,17 +1,80 @@
- * {border: 1px solid black;}
+//.main-content * {border: 1px solid black;}
+
+body {
+	margin: 0;
+}
+/***********************************************/
+#headingPart{
+    width:100vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.headerSection{
+    width:90vw;
+    display:flex;
+    height:60px;
+    background-color: #46c768;
+    align-items: center;
+    margin-top: 1em;
+    border-radius: 6px;
+}
+
+#leftHeaderSection{
+    display:flex;
+    height:100px;
+    width: 45vw;
+    align-items: center;
+}
+
+#leftHeaderSection img{
+    width: 250px;
+    height: 45px;
+    padding-left: 20px;
+	cursor: pointer;
+}
+
+#rightHeaderSection{
+    display:flex;
+    height:60px;
+    width: 50vw;
+    justify-content: right;
+    align-items: center;
+}
+
+#rightHeaderSection button:hover{
+    background-color: white;
+    cursor: pointer;
+    color:#46c768;
+}
+
+#rightHeaderSection button{
+    height:25px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    color: white;
+    margin-left: 15px;
+    margin-right:20px;
+    background-color: #46c768;
+    border: 0;
+    font-family: 'Bruno Ace', sans-serif;
+}
+
+.landingHeading{
+    display:flex;
+    color: white;
+    font-size: 3em;
+    justify-content: center;
+    font-family: 'Racing Sans One', sans-serif;
+}/***********************************************/
 
 /* shared properties */
 
-section, .catalogue-section {
-	border: 1px solid black;
-	//height: 100vw;
-}
 
 /* all properties */
-
-header {
-	background-image: none;
-}
 
 .landingHeading h1 {
 	color: #222;
@@ -19,21 +82,24 @@ header {
 
 .main-content {
 	display: flex;
+	justify-content: center;
 }
 
 .catalogue-section {
-	//max-width: 75vw;
+	width: 850px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	justify-items: center;
-	align-content: center;
+	gap: 20px 10px;
 }
+
+/* sorting toggle button section starts here */
 
 .top-display-toggle {
 	display: flex;
     justify-content: flex-end;
 	grid-column: span 3;
 	width: 100%;
+	background-color: #eee;
 }
 
 .top-display-toggle button img {
@@ -44,6 +110,7 @@ header {
 }
 
 .top-display-toggle button {
+	border: 1px solid black;
 	margin: 5px;
 	//padding: 5px 5px;
 	border-radius: 3px;
@@ -66,22 +133,28 @@ button[id='list'] {
 
 button[id='grid'] {
 	border-radius: 0px 3px 3px 0px;
+	border-left: 0px;
 	margin-left: 0px;
 }
+/* sorting toggle button section ends here */
 
 .catalogue-item {
 	font-family: sans-serif;
 	width: 300px;
-	height: 350px;
-	margin: 10% 0%;
+	height: 400px;
 	padding: 10px 10px;
 	background-color: #eee;
-	border: 2px solid transparent;
+	border: 2px solid white;
 }
 
 .catalogue-item:hover {
 	border-color: #46c768;
 	cursor: pointer;
+}
+
+.catalogue-item img {
+	width: 300px;
+	
 }
 
 /* this is too much!
@@ -90,7 +163,11 @@ button[id='grid'] {
 }
 */
 
-.catalogue-item img {
-	width: 300px;
-	
+.year-built, .kilometers, .engine, .transmission {
+	padding-right: 5px;
+	border-right: 1px solid black;
+}
+
+.catalogue-item button{
+	cursor: pointer;
 }

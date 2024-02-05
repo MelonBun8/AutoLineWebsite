@@ -14,8 +14,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
 
-        <link href = "style.css", rel = "stylesheet">
+        
 		<link href = "CatalogStyle.css", rel = "stylesheet">
+		
+		<script src="script.js"></script>
 		
     </head>
 
@@ -26,15 +28,14 @@
         <header>
 
             <div id = "headingPart">
-                <nav class = "headerSection">
+                <nav class = "headerSection"> 
                     
-                    <div id = "leftHeaderSection">
-                        <img src = "images/LogoGreen.png" alt = "logo" title="Home Page" onClick="homepage()"/> 
+                    <div id = "leftHeaderSection"> 
+                        <img src = "images/LogoGreen.png" alt = "logo" title="Home Page" onClick="openNewPage(1)"/> 
                     </div> 
 
                     <div id = "rightHeaderSection">
-                        <button id = "butt1" type="button" onclick=openNewPage(2)>View Catalog</button>
-                        <button id = "butt2" type="button" onclick=openNewPage(3)>Get In Touch</button>
+                        <button id = "butt1" type="button" onclick=openNewPage(1)>Home</button>
                         <button id = "butt3" type="button" onclick=openNewPage(4)>Contact & About</button>
                         <button id = "butt4" type="button" onclick=openNewPage(5)>Sign In / Up</button>
                     </div>
@@ -50,16 +51,9 @@
         </header>
 		
 		<main class="main-content">
-			<section class="left-section">
-				section stuff here
-				<div> random buttons n stuff </div>
-				<div> random buttons n stuff </div>
-				<div> random buttons n stuff </div>
-				<div> random buttons n stuff </div>
-				<div> random buttons n stuff </div>
-				<div> random buttons n stuff </div>
-				
-			</section>
+			<!--
+				place your filtering section elements here
+			-->
 			
 			<main class='catalogue-section'>
 				<div class='top-display-toggle'>
@@ -72,21 +66,82 @@
 					<h3> Toyota Land Cruiser 1986 </h3>
 					<p class='registered-city' title='registered city'> Karachi</p>
 					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span> |
-						<span class='kilometers' title='Kilometers run'>20000km</span> |
-						<span class='engine' title='Engine power'> 500cc</span> | 
+						<span class='year-built' title='Production Year'>9999</span>
+						<span class='kilometers' title='Kilometers run'>20000km</span>
+						<span class='engine' title='Engine power'> 500cc</span>
 						<span class='transmission' title='Transmission' > automatic</span>
 					</p>
 					
 					<h3>Rs. 7,800,000</h3>
+					
+					<button>Message</button>
 				</div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
-				<div class='catalogue-item'></div>
+				
+				<div class="catalogue-item">
+					<img src="images/SUV.jpg"/>
+					<h3> Toyota Land Cruiser 1986 </h3>
+					<p class='registered-city' title='registered city'> Karachi</p>
+					<p class='car-information'>
+						<span class='year-built' title='Production Year'>9999</span>
+						<span class='kilometers' title='Kilometers run'>20000km</span>
+						<span class='engine' title='Engine power'> 500cc</span>
+						<span class='transmission' title='Transmission' > automatic</span>
+					</p>
+					
+					<h3>Rs. 7,800,000</h3>
+					
+					<button>Message</button>
+				</div>
+				
+				<div class="catalogue-item">
+					<img src="images/SUV.jpg"/>
+					<h3> Toyota Land Cruiser 1986 </h3>
+					<p class='registered-city' title='registered city'> Karachi</p>
+					<p class='car-information'>
+						<span class='year-built' title='Production Year'>9999</span>
+						<span class='kilometers' title='Kilometers run'>20000km</span>
+						<span class='engine' title='Engine power'> 500cc</span>
+						<span class='transmission' title='Transmission' > automatic</span>
+					</p>
+					
+					<h3>Rs. 7,800,000</h3>
+					
+					<button>Message</button>
+				</div>
+				
+				<div class="catalogue-item">
+					<img src="images/SUV.jpg"/>
+					<h3> Toyota Land Cruiser 1986 </h3>
+					<p class='registered-city' title='registered city'> Karachi</p>
+					<p class='car-information'>
+						<span class='year-built' title='Production Year'>9999</span>
+						<span class='kilometers' title='Kilometers run'>20000km</span>
+						<span class='engine' title='Engine power'> 500cc</span>
+						<span class='transmission' title='Transmission' > automatic</span>
+					</p>
+					
+					<h3>Rs. 7,800,000</h3>
+					
+					<button>Message</button>
+				</div>
+				
+				<div class="catalogue-item">
+					<img src="images/SUV.jpg"/>
+					<h3> Toyota Land Cruiser 1986 </h3>
+					<p class='registered-city' title='registered city'> Karachi</p>
+					<p class='car-information'>
+						<span class='year-built' title='Production Year'>9999</span>
+						<span class='kilometers' title='Kilometers run'>20000km</span>
+						<span class='engine' title='Engine power'> 500cc</span>
+						<span class='transmission' title='Transmission' > automatic</span>
+					</p>
+					
+					<h3>Rs. 7,800,000</h3>
+					
+					<button>Message</button>
+				</div>
+				
+				
 			</main>
 		</main>
 
