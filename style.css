@@ -213,9 +213,11 @@ main{
 }
 
 .text {
+	width: 450px;
 	font-family: 'Bruno Ace', sans-serif;
 	font-size: 18px;
 	color: white;
+	text-align: justify;
 }
 
 b{
@@ -254,6 +256,11 @@ b{
 	top:9px;
 }
 
+.information {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 15px;
+}
+
 .socials {
 	display: flex;
 	align-items: center;
@@ -264,6 +271,12 @@ b{
 .copyright {
 	align-items: center;
 	padding: 15px 0px 0px 0px;
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 12px;
+}
+.copyright span {
+	font-family: sans-serif;
+	font-size: 15px;
 }
 
 .footerContent h1 {
