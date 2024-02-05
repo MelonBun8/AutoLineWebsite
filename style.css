@@ -132,35 +132,49 @@ main{
     justify-content: center;
 }
 
-.landingCatalogGrid img{
-    margin-top: 10px;
-    width:42vw;
-    height:23.63vw;
-    margin-bottom: 10px;
-    filter: brightness(50%);
-}
 
 .box{
+    width:42vw;
+    height:23.63vw;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     text-align: center;
     color:white;
+    background-size: cover;
+    filter:brightness(50%);
 }
 
-.box:hover{
+#box-a{
+    background-image: url("images/hatchback.jpg");
+}
+
+#box-b{
+    background-image: url("images/Sedan.jpg");
+}
+
+#box-c{
+    background-image: url("images/Truck.jpg");
+}
+
+#box-d{
+    background-image: url("images/SUV.jpg");
+}
+
+.box:hover, .box img:hover{
     color:#46c768;   
     filter: brightness(100%);
     cursor: pointer;
 }
 
-.box img:hover{
+#box-a:hover, #box-b:hover, #box-c:hover, #box-d:hover{
     filter:brightness(100%);
-    cursor: pointer;
 }
 
 .centered{
+    filter:brightness(100%);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -170,3 +184,99 @@ main{
 }
 
 
+/* CSS by Mohsin */
+
+.main-section {
+	background-image: url('images/cars-on-a-parking.jpg');
+	background-size:cover;
+	object-fit:fill;
+	background-position-y: 80;
+	padding: 5em 0em;
+	display: block;
+	margin-top: 150px;
+}
+
+.main-div {
+	display: grid;
+	align-items: center; 
+	justify-items: center;
+	padding-left: 1em;
+	padding-right: 1em;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 5px;
+	margin: 0px 100px;
+}
+
+.section-img  {
+	margin: 20px 20px;
+	width:450px;
+}
+
+.text {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 18px;
+	color: white;
+}
+
+b{
+	font-size: 25px;
+	color: #46c768;
+}
+
+.text button {
+	margin-top: 20px;
+	background-color: #46c768;
+	padding: 10px 10px;
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 16px;
+	border: none;
+}
+
+.text button:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+#headingTwo{
+    color:white;
+}
+
+/* footer starts from here */
+
+.footerContent {
+	background-color: #46c768;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer-img {
+	position: relative;
+	top:9px;
+}
+
+.socials {
+	display: flex;
+	align-items: center;
+	min-width: 150px;
+	justify-content: space-between;
+}
+
+.copyright {
+	align-items: center;
+	padding: 15px 0px 0px 0px;
+}
+
+.footerContent h1 {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 44px;
+	color:white;
+	margin: 0;	
+}
+
+.footerContent{
+    font-family:"Roboto" sans-serif;
+}
+
+footer{
+    clear:both;
+}

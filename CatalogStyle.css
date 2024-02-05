@@ -1,0 +1,221 @@
+body{
+    margin: 0;
+    border: 0;
+    padding:0;
+    width:100vw;
+    overflow-x:hidden;
+    display:block;
+    background-color: #eee;
+}
+
+h3{
+    margin:0;
+    padding:0;
+}
+
+
+.catalogContainer{
+    display:flex;
+    justify-content: center;
+}
+
+.sideBar{
+    width:230px;
+    /*temporary*/
+    margin-right:30px;
+}
+
+.catalogSection{
+    width:850px;
+    height:1000px;
+}
+
+.headingTab{
+    display:flex;
+    align-items: center;
+    height:50px;
+    background-color: #dddddd;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.8em;
+    color:black;    
+    position:relative;      
+    border-bottom: 1px solid gray;   
+}
+
+.headingTab i{
+    position:absolute;
+    right:10px;
+    font-size: 15px;
+}
+
+.headingTab h3{
+    margin-left:10px;
+}
+
+#mainHeadingTab{
+    background-color: #46c768;
+    color:white;
+}
+
+.contentArea{
+    display:flex;
+    position:relative;
+    background-color: white;
+    border-left:1px solid lightgreen;
+    border-right:1px solid lightgreen;
+}
+
+.C1 button{
+    position: absolute;
+    background-color:#46c768;
+    color:white;
+    border:none;
+    right:14px;
+    top:15px;
+    height:30px;
+}
+
+.C1 input{
+    height: 30px;
+    margin:15px 10px;
+    width:90%;
+}
+
+.C2{
+    font-family: "Roboto", sans-serif;
+}
+
+.C2 ul{
+    list-style: none;
+    float: left;
+}
+
+.C2 li{
+    margin:10px 0;
+}
+
+.C2 input{
+    width:12px;
+    height:12px;
+}
+
+.C3{
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+.C3 input{
+    margin:15px 0;
+    width:80px;
+    border:1px solid lightgray;
+    height:30px;
+}
+
+.C3 button{
+    height:30px;
+    border:none;
+    border-radius: 2px;
+    background-color: #46c768;
+    color:white;
+}
+/* sidebar stuff END */
+
+/*main section stuff BEGIN */
+
+.stackTile{
+    margin-bottom: 30px;
+    position: relative;
+    height:150px;
+    background-color: white;
+    border:1px solid lightgray;
+}
+
+.featuredDiv{
+    position:absolute;
+    width:100px;
+    background-color:firebrick;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+.featuredDiv i{
+    padding-left:3px;
+    font-size: 13px;
+}
+
+.tileContent{
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    font-family: "Roboto", sans-serif;
+}
+
+.tileContent h2, p{
+    margin:0;
+}
+
+.tileImage{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+}
+
+.tileImage img{
+    width:100%;
+}
+
+.tileInfo{
+    width:100%;
+    height:100%;
+    background-color: white;
+    padding-left: 20px;
+}
+
+.tileInfo h2{
+    color:#46c768;
+    padding:10px 0;
+}
+.tileInfo .infoPosted{
+    font-size:13px;
+    padding-top:5px;
+}
+
+.tileInfo .infoCity, .infoGeneral{
+    padding:5px 0;
+}
+
+.tilePricePhone{
+    display:grid;
+    text-align: right;
+    grid-template-rows: 1fr 1fr;
+    justify-content: right;
+    width:100%;
+    height:100%;
+}
+
+.tilePricePhone h2{
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.likeCall{
+    display:flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 8px;
+}
+
+.tilePricePhone button{
+    border:0;
+    height:30px;
+    padding: 0 10px;
+}
+
+.phoneButton{
+    background-color: #46c768;
+    color:white;
+}
