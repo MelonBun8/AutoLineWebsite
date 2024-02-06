@@ -12,7 +12,8 @@
         <!--including the link to the external css stylesheet -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
         
 		<link href = "CatalogStyle.css", rel = "stylesheet">
@@ -49,96 +50,295 @@
             </div>
 
         </header>
+			
+		
+		<div class="toggle-flex-wrapper">
+			<div class='top-display-toggle'>
+				<button id='list' class="selected"> <img src='images/listview.png'> LIST</button><!-- Yo...
+				what is this trick--><button id='grid'> <img src='images/gridview.png'> GRID</button>
+			</div>
+		</div>
+
 		
 		<main class="main-content">
-			<!--
-				place your filtering section elements here
-			-->
+		
+
+			<!--Saad's content START-->
+			<div class = "sideBar">
+                <!--Sidebar will have SEARCH BY KEYWORD, CITY, AND PRICE RANGE-->
+                <div class = "headingTab" id="mainHeadingTab">
+                    <h3>SHOW RESULTS BY:</h3>
+                </div>
+
+                <div class = "headingTab">
+                    <h3>SEARCH BY KEYWORD</h3>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class = "contentArea C1">
+                    <input type = "search" placeholder = "eg: Honda in Karachi">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+
+
+                <div class = "headingTab">
+                    <h3>CITY</h3>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+
+                <div class = "contentArea C2">
+                    <ul>
+                        <li><input type = "checkbox"> Karachi</li>
+                        <li><input type = "checkbox"> Lahore</li>
+                        <li><input type = "checkbox"> Islamabad</li>
+                    </ul>
+                </div>
+
+
+
+                <div class = "headingTab">
+                    <h3>PRICE RANGE</h3>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class = "contentArea C3">
+                    <input type = "search" placeholder = "From">
+                    <input type = "search" placeholder = "To">
+                    <button>Go</button>
+                </div>
+
+            </div>
 			
-			<main class='catalogue-section'>
-				<div class='top-display-toggle'>
-					<button id='list'> <img src='images/listview.png'> LIST</button><!-- Yo...
-					what is this trick--><button id='grid'> <img src='images/gridview.png'> GRID</button>
+			
+			<div id="old-element" class = "catalogSection visible">
+
+                <div class = "stackTile">
+                    <div class = featuredDiv>
+                        FEATURED
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div class = tileContent>
+
+                        <div class = tileImage>
+                            <img src = "images/Sedan.jpg">
+                        </div>
+                        <div class = tileInfo>
+                            <h2 class = infoHeading>Hyundai Elantra for sale</h2>
+                            <p class = infoCity>Islamabad</p>
+                            <p class = infoGeneral>2012 | 120,000 km | Hybrid | 1500 cc | Automatic</p>
+                            <p class = infoPosted>posted 12 days ago</p>
+
+                        </div>
+                        <div class = tilePricePhone>
+                            <h2>PKR 20.5 Lacs</h2>
+                            <div class = "likeCall">
+                                <button class = heartButton><i class="fa-regular fa-heart"></i></button>
+                                <button class = phoneButton><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class = "stackTile">
+
+                    <div class = featuredDiv>
+                        FEATURED
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div class = tileContent>
+
+                        <div class = tileImage>
+                            <img src = "images/hatchback.jpg">
+                        </div>
+                        <div class = tileInfo>
+                            <h2 class = infoHeading>Mercedes A Class for sale</h2>
+                            <p class = infoCity>Islamabad</p>
+                            <p class = infoGeneral>2012 | 120,000 km | Hybrid | 1500 cc | Automatic</p>
+                            <p class = infoPosted>posted 12 days ago</p>
+
+                        </div>
+                        <div class = tilePricePhone>
+                            <h2>PKR 20.5 Lacs</h2>
+                            <div class = "likeCall">
+                                <button class = heartButton><i class="fa-regular fa-heart"></i></button>
+                                <button class = phoneButton><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class = "stackTile">
+
+                    <div class = tileContent>
+
+                        <div class = tileImage>
+                            <img src = "images/SUV.jpg">
+                        </div>
+                        <div class = tileInfo>
+                            <h2 class = infoHeading>Lamborghini Urus for sale</h2>
+                            <p class = infoCity>Islamabad</p>
+                            <p class = infoGeneral>2012 | 120,000 km | Hybrid | 1500 cc | Automatic</p>
+                            <p class = infoPosted>posted 12 days ago</p>
+
+                        </div>
+                        <div class = tilePricePhone>
+                            <h2>PKR 20.5 Lacs</h2>
+                            <div class = "likeCall">
+                                <button class = heartButton><i class="fa-regular fa-heart"></i></button>
+                                <button class = phoneButton><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class = "stackTile">
+
+                    <div class = tileContent>
+
+                        <div class = tileImage>
+                            <img src = "images/Truck.jpg">
+                        </div>
+                        <div class = tileInfo>
+                            <h2 class = infoHeading>Ford F150 Raptor for sale</h2>
+                            <p class = infoCity>Islamabad</p>
+                            <p class = infoGeneral>2012 | 120,000 km | Hybrid | 1500 cc | Automatic</p>
+                            <p class = infoPosted>posted 12 days ago</p>
+
+                        </div>
+                        <div class = tilePricePhone>
+                            <h2>PKR 20.5 Lacs</h2>
+                            <div class = "likeCall">
+                                <button class = heartButton><i class="fa-regular fa-heart"></i></button>
+                                <button class = phoneButton><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+			<!--Saad's content END-->
+
+			
+			<main id="new-element" class='catalogue-section hidden'>
+				
+				
+				<div class="catalogue-item">
+					
+					<div class='catalogue-item-content'>
+					
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
 				</div>
 				
 				<div class="catalogue-item">
-					<img src="images/SUV.jpg"/>
-					<h3> Toyota Land Cruiser 1986 </h3>
-					<p class='registered-city' title='registered city'> Karachi</p>
-					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span>
-						<span class='kilometers' title='Kilometers run'>20000km</span>
-						<span class='engine' title='Engine power'> 500cc</span>
-						<span class='transmission' title='Transmission' > automatic</span>
-					</p>
-					
-					<h3>Rs. 7,800,000</h3>
-					
-					<button>Message</button>
+					<div class = featuredDiv>
+                        FEATURED
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
 				</div>
 				
 				<div class="catalogue-item">
-					<img src="images/SUV.jpg"/>
-					<h3> Toyota Land Cruiser 1986 </h3>
-					<p class='registered-city' title='registered city'> Karachi</p>
-					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span>
-						<span class='kilometers' title='Kilometers run'>20000km</span>
-						<span class='engine' title='Engine power'> 500cc</span>
-						<span class='transmission' title='Transmission' > automatic</span>
-					</p>
-					
-					<h3>Rs. 7,800,000</h3>
-					
-					<button>Message</button>
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
 				</div>
 				
 				<div class="catalogue-item">
-					<img src="images/SUV.jpg"/>
-					<h3> Toyota Land Cruiser 1986 </h3>
-					<p class='registered-city' title='registered city'> Karachi</p>
-					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span>
-						<span class='kilometers' title='Kilometers run'>20000km</span>
-						<span class='engine' title='Engine power'> 500cc</span>
-						<span class='transmission' title='Transmission' > automatic</span>
-					</p>
-					
-					<h3>Rs. 7,800,000</h3>
-					
-					<button>Message</button>
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
 				</div>
 				
 				<div class="catalogue-item">
-					<img src="images/SUV.jpg"/>
-					<h3> Toyota Land Cruiser 1986 </h3>
-					<p class='registered-city' title='registered city'> Karachi</p>
-					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span>
-						<span class='kilometers' title='Kilometers run'>20000km</span>
-						<span class='engine' title='Engine power'> 500cc</span>
-						<span class='transmission' title='Transmission' > automatic</span>
-					</p>
-					
-					<h3>Rs. 7,800,000</h3>
-					
-					<button>Message</button>
-				</div>
-				
-				<div class="catalogue-item">
-					<img src="images/SUV.jpg"/>
-					<h3> Toyota Land Cruiser 1986 </h3>
-					<p class='registered-city' title='registered city'> Karachi</p>
-					<p class='car-information'>
-						<span class='year-built' title='Production Year'>9999</span>
-						<span class='kilometers' title='Kilometers run'>20000km</span>
-						<span class='engine' title='Engine power'> 500cc</span>
-						<span class='transmission' title='Transmission' > automatic</span>
-					</p>
-					
-					<h3>Rs. 7,800,000</h3>
-					
-					<button>Message</button>
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
 				</div>
 				
 				
@@ -146,7 +346,28 @@
 		</main>
 
 	<!--scripts go here-->
-	<script src="script.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    const oldElement = document.getElementById('old-element');
+    const newElement = document.getElementById('new-element');
+    const clickListButton = document.getElementById('list');
+    const clickGridButton = document.getElementById('grid');
+
+    // Initially hide the newElement
+    newElement.style.display = 'none';
+
+    clickListButton.addEventListener('click', function() {
+        oldElement.style.display = 'block';
+        newElement.style.display = 'none';
+    });
+
+    clickGridButton.addEventListener('click', function() {
+        oldElement.style.display = 'none';
+        newElement.style.display = 'grid';
+    });
+});
+
+	</script>
 
     </body>
 

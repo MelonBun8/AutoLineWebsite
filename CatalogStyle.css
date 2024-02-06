@@ -1,13 +1,11 @@
-//.main-content * {border: 1px solid black;}
-
 body {
 	margin: 0;
 }
-/***********************************************/
+
+/* nav bar start*/
 #headingPart{
-    width:100vw;
+    
     display: flex;
-    align-content: center;
     justify-content: center;
 }
 
@@ -23,7 +21,6 @@ body {
 
 #leftHeaderSection{
     display:flex;
-    height:100px;
     width: 45vw;
     align-items: center;
 }
@@ -69,37 +66,30 @@ body {
     font-size: 3em;
     justify-content: center;
     font-family: 'Racing Sans One', sans-serif;
-}/***********************************************/
+}
+/* nav bar end*/
 
-/* shared properties */
 
-
-/* all properties */
 
 .landingHeading h1 {
 	color: #222;
 }
 
-.main-content {
+/* list-grid view section starts here */
+.toggle-flex-wrapper {
 	display: flex;
 	justify-content: center;
+	background-color: #eee;
+	padding-top: 20px;
 }
-
-.catalogue-section {
-	width: 850px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 20px 10px;
-}
-
-/* sorting toggle button section starts here */
 
 .top-display-toggle {
 	display: flex;
     justify-content: flex-end;
-	grid-column: span 3;
-	width: 100%;
-	background-color: #eee;
+	width: 90%;
+	background-color: #ddd;
+	border: 1px solid silver;
+	margin-bottom: 20px;
 }
 
 .top-display-toggle button img {
@@ -136,38 +126,308 @@ button[id='grid'] {
 	border-left: 0px;
 	margin-left: 0px;
 }
-/* sorting toggle button section ends here */
+
+.hidden {
+	display: none;
+}
+.pressed {
+	//background-color: lightgray;
+}
+/* list-grid view section ends here */
+
+
+.main-content {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+	background-color: #eee;
+}
+
+/* side bar by Saad */
+.sideBar{
+    width:230px;
+    /*temporary*/
+    margin-right:30px;
+}
+
+.headingTab{
+    display:flex;
+    align-items: center;
+    height:50px;
+    background-color: #dddddd;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.8em;
+    color:black;    
+    position:relative;      
+    border-bottom: 1px solid gray;   
+}
+
+.headingTab i{
+    position:absolute;
+    right:10px;
+    font-size: 15px;
+}
+
+.headingTab h3{
+    margin-left:10px;
+}
+
+#mainHeadingTab{
+    background-color: #46c768;
+    color:white;
+}
+
+.contentArea{
+    display:flex;
+    position:relative;
+    background-color: white;
+    border-left:1px solid lightgreen;
+    border-right:1px solid lightgreen;
+}
+
+.C1 button{
+    position: absolute;
+    background-color:#46c768;
+    color:white;
+    border:none;
+    right:14px;
+    top:15px;
+    height:30px;
+}
+
+.C1 input{
+    height: 30px;
+    margin:15px 10px;
+    width:90%;
+}
+
+.C2{
+    font-family: "Roboto", sans-serif;
+}
+
+.C2 ul{
+    list-style: none;
+    float: left;
+}
+
+.C2 li{
+    margin:10px 0;
+}
+
+.C2 input{
+    width:12px;
+    height:12px;
+}
+
+.C3{
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+.C3 input{
+    margin:15px 0;
+    width:80px;
+    border:1px solid lightgray;
+    height:30px;
+}
+
+.C3 button{
+    height:30px;
+    border:none;
+    border-radius: 2px;
+    background-color: #46c768;
+    color:white;
+}
+/* sidebar stuff END */
+
+
+
+/*main section stuff by Saad BEGIN */
+.catalogSection{
+    width:850px;
+}
+
+.stackTile{
+    margin-bottom: 30px;
+    position: relative;
+    height:150px;
+    background-color: white;
+    border:1px solid lightgray;
+}
+
+.featuredDiv{
+    position:absolute;
+    width:100px;
+    background-color:firebrick;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+.featuredDiv i{
+    padding-left:3px;
+    font-size: 13px;
+}
+
+.tileContent{
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    font-family: "Roboto", sans-serif;
+}
+
+.tileContent h2, p{
+    margin:0;
+}
+
+.tileImage{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+}
+
+.tileImage img{
+    width:100%;
+}
+
+.tileInfo{
+    width:100%;
+    height:100%;
+    background-color: white;
+    padding-left: 20px;
+}
+
+.tileInfo h2{
+    color:#46c768;
+    padding:10px 0;
+}
+.tileInfo .infoPosted{
+    font-size:13px;
+    padding-top:5px;
+}
+
+.tileInfo .infoCity, .infoGeneral{
+    padding:5px 0;
+}
+
+.tilePricePhone{
+    display:grid;
+    text-align: right;
+    grid-template-rows: 1fr 1fr;
+    justify-content: right;
+    width:100%;
+    height:100%;
+}
+
+.tilePricePhone h2{
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.likeCall{
+    display:flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 8px;
+}
+
+.tilePricePhone button{
+    border:0;
+    height:30px;
+    padding: 0 10px;
+}
+
+.phoneButton{
+    background-color: #46c768;
+    color:white;
+}
+/*main section stuff by Saad BEGIN */
+
+
+
+/* grid view CSS by Mohsin START*/
+
+.catalogue-section {
+	background-color: #eee;
+	width: 850px;
+	display: none;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px 10px;
+	margin-bottom: 60px;
+}
+
 
 .catalogue-item {
 	font-family: sans-serif;
-	width: 300px;
+	width: 250px;
 	height: 400px;
-	padding: 10px 10px;
-	background-color: #eee;
-	border: 2px solid white;
+	//padding: 10px 10px;
+	background-color: #fff;
+	border: 1px solid silver;
 }
 
 .catalogue-item:hover {
 	border-color: #46c768;
-	cursor: pointer;
 }
 
 .catalogue-item img {
-	width: 300px;
-	
+	width: 100%;	
 }
 
-/* this is too much!
-.catalogue-item:hover h3 {
+.catalogue-item-content {
+	padding: 10px 10px;
+	font-family: "Roboto", sans-serif;
+}
+
+.featuredDiv{
+    position:absolute;
+    width:100px;
+    background-color:firebrick;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+.featuredDiv i{
+    padding-left:3px;
+    font-size: 13px;
+}
+
+.catalogue-item-content h3:first-of-type {
 	color: #46c768;
 }
-*/
 
 .year-built, .kilometers, .engine, .transmission {
 	padding-right: 5px;
 	border-right: 1px solid black;
 }
 
-.catalogue-item button{
-	cursor: pointer;
+.button-flex-wrapper {
+	display: flex;
 }
+
+.catalogue-item button{
+	color: white;
+	cursor: pointer;
+	background-color: #46c768;
+	width: 100%;
+	height: 30px;
+	border: 0;
+}
+
+.catalogue-item button:active{	
+	background-color: #04AA6D;
+}
+
+button[class='heartButton'] {
+	background-color: #eee;
+	width: 30px;
+	color: black;
+	flex-shrink: 0;
+}
+/* grid view CSS by Mohsin END*/
+
