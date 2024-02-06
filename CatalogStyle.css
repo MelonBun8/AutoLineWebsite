@@ -102,7 +102,6 @@ body {
 .top-display-toggle button {
 	border: 1px solid black;
 	margin: 5px;
-	//padding: 5px 5px;
 	border-radius: 3px;
 	background: linear-gradient(to top, #46C768, #04AA6D);
 	cursor: pointer;
@@ -130,9 +129,7 @@ button[id='grid'] {
 .hidden {
 	display: none;
 }
-.pressed {
-	//background-color: lightgray;
-}
+
 /* list-grid view section ends here */
 
 
@@ -364,7 +361,6 @@ button[id='grid'] {
 	font-family: sans-serif;
 	width: 250px;
 	height: 400px;
-	//padding: 10px 10px;
 	background-color: #fff;
 	border: 1px solid silver;
 }
@@ -459,7 +455,7 @@ footer {
 .copyright {
 	align-items: center;
 	padding: 15px 0px 0px 0px;
-	font-family: 'Bruno Ace', sans-serif;
+	font-family: "Bruno Ace", sans-serif;
 	font-size: 12px;
 }
 .copyright span {
@@ -468,8 +464,12 @@ footer {
 }
 
 .copyright h1 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Bruno Ace', sans-serif;
 	font-size: 44px;
 	color:white;
 	margin: 0;	
+}
+
+#phoneFooter{
+    margin-bottom: 15px;
 }
