@@ -102,7 +102,6 @@ body {
 .top-display-toggle button {
 	border: 1px solid black;
 	margin: 5px;
-	//padding: 5px 5px;
 	border-radius: 3px;
 	background: linear-gradient(to top, #46C768, #04AA6D);
 	cursor: pointer;
@@ -130,17 +129,19 @@ button[id='grid'] {
 .hidden {
 	display: none;
 }
+
 .pressed {
 	//background-color: lightgray;
 }
+
 /* list-grid view section ends here */
 
 
 .main-content {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 30px;
 	background-color: #eee;
+	padding-bottom: 150px;
 }
 
 /* side bar by Saad */
@@ -364,7 +365,6 @@ button[id='grid'] {
 	font-family: sans-serif;
 	width: 250px;
 	height: 400px;
-	//padding: 10px 10px;
 	background-color: #fff;
 	border: 1px solid silver;
 }
@@ -431,3 +431,50 @@ button[class='heartButton'] {
 }
 /* grid view CSS by Mohsin END*/
 
+
+
+/* footer starts from here */
+footer {
+	background-color: #46c768;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer-img {
+	position: relative;
+	top:9px;
+}
+
+.information {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 15px;
+}
+
+.socials {
+	display: flex;
+	align-items: center;
+	min-width: 150px;
+	justify-content: space-between;
+}
+
+.copyright {
+	align-items: center;
+	padding: 15px 0px 0px 0px;
+	font-family: "Bruno Ace", sans-serif;
+	font-size: 12px;
+}
+.copyright span {
+	font-family: sans-serif;
+	font-size: 15px;
+}
+
+.copyright h1 {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 44px;
+	color:white;
+	margin: 0;	
+}
+
+#phoneFooter{
+    margin-bottom: 15px;
+}

@@ -133,35 +133,49 @@ main{
     justify-content: center;
 }
 
-.landingCatalogGrid img{
-    margin-top: 10px;
-    width:42vw;
-    height:23.63vw;
-    margin-bottom: 10px;
-    filter: brightness(50%);
-}
 
 .box{
+    width:42vw;
+    height:23.63vw;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     text-align: center;
     color:white;
+    background-size: cover;
+    filter:brightness(50%);
 }
 
-.box:hover{
+#box-a{
+    background-image: url("images/hatchback.jpg");
+}
+
+#box-b{
+    background-image: url("images/Sedan.jpg");
+}
+
+#box-c{
+    background-image: url("images/Truck.jpg");
+}
+
+#box-d{
+    background-image: url("images/SUV.jpg");
+}
+
+.box:hover, .box img:hover{
     color:#46c768;   
     filter: brightness(100%);
     cursor: pointer;
 }
 
-.box img:hover{
+#box-a:hover, #box-b:hover, #box-c:hover, #box-d:hover{
     filter:brightness(100%);
-    cursor: pointer;
 }
 
 .centered{
+    filter:brightness(100%);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -171,7 +185,6 @@ main{
 }
 
 /* CSS by Mohsin */
-
 
 .main-section {
 	background-image: url('images/cars-on-a-parking.jpg');
@@ -226,9 +239,13 @@ b{
   color: white;
 }
 
+#headingTwo{
+    color:white;
+}
+
 /* footer starts from here */
 
-footer {
+.footerContent {
 	background-color: #46c768;
 	display: flex;
 	justify-content: space-around;
@@ -264,7 +281,24 @@ footer {
 
 .copyright h1 {
 	font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.footerContent h1 {
+	font-family: 'Bruno Ace', sans-serif;
 	font-size: 44px;
 	color:white;
 	margin: 0;	
+}
+
+.footerContent{
+    font-family:"Roboto" sans-serif;
+}
+
+footer{
+    clear:both;
+}
+
+#cRight{
+    font-size:15px;
 }
