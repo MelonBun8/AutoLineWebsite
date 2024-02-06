@@ -1,1 +1,201 @@
-<h1>Contact Us</h1>
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta charset = "UTF-8"> <!-- These things like charset in the opening tags are known as attributes-->
+        <meta name = "Description:" content = "Autoline Showroom Karachi | Official Website">
+        <title>
+            AutoLine Showroom | Home Page
+        </title>
+        <link rel="icon" href="images/favicon.png">
+        <!--including the link to the external css stylesheet -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src = "script.js"></script>
+        <link href = "ContactStyle.css", rel = "stylesheet">
+        
+    </head>
+
+
+
+    <body>
+
+        <div id = "headingPart">
+            <nav class = "headerSection">
+                
+                <div id = "leftHeaderSection">
+                    <img src = "images/LogoGreen.png" width = 300px alt = "logo"/> 
+                </div> 
+
+                <div id = "rightHeaderSection">
+                    <button id = "butt3" type="button" onclick=openNewPage(1)>Home</button>
+                    <button id = "butt1" type="button" onclick=openNewPage(2)>View Catalog</button>
+                    <button id = "butt4" type="button" onclick=openNewPage(5)>Sign In / Up</button>
+                </div>
+
+
+            </nav>
+        </div>
+
+        <div class = landingHeading>
+			<h1>Contact Us</h1>    
+		</div>
+
+		<div class="main-form-section">
+
+			<img src="images/chat.jpg"/>
+			
+				
+			<form>
+				<h2>Talk to us!</h2>
+				
+				<div class="form-column">
+					<div class="container">
+						<label for="fname">First name <span>*</span></label>
+						<input type="text" id="fname" name="fname" placeholder="Saad">
+					</div>
+					
+					<div class="container">
+						<label for="lname">Last name <span>*</span></label>
+						<input type="text" id="lname" name="lname" placeholder="Khan">
+					</div>
+				</div>
+				
+				<div class="form-column">
+					<div class="container">
+						<label for="email">Email </label>
+						<input type="email" id="email" name="email" placeholder="example@mail.com">
+					</div>
+					
+					<div class="container">
+						<label for="phnum">Phone Number <span>*</span></label>
+						<input type="text" id="phnum" name="phnum" value="+92">
+					</div>
+				</div>
+				
+				<div class="no-flex">
+					<label for="discuss">What would you like to discuss?</label>
+					<input type="text" id="discuss" name="discuss" placeholder="I want to...">
+				</div>
+				
+			</form>
+
+		</div>
+
+
+        <section class = "aboutSection">
+
+            <div class="aboutContainer"> 
+
+
+                <div id="CEOImageContainer">
+                    <img src = "images/CEO.png">
+                </div>
+
+                <div id="aboutCompanyContainer">
+                    <div id = aboutHeadingContainer>
+                        <h1>About Our CEO</h1>
+                    </div>
+                    <div id = aboutParagraphContainer>
+                        <p> 
+                        
+                            Introducing Mark Anderson, the accomplished CEO at the helm of Autoline, 
+                            a leading force in the automotive industry. With an impressive career spanning decades in executive 
+                            leadership roles, Mark brings a wealth of experience and a strategic mindset to guide Autoline into the 
+                            future. Known for his exceptional business acumen and forward-thinking approach, Mark has played a pivotal
+                            role in shaping Autoline's trajectory, fostering growth, and ensuring the company's continued success. His
+                            commitment to excellence and innovation is evident in Autoline's cutting-edge products and services. Mark 
+                            Anderson's leadership is characterized by a strong emphasis on customer satisfaction, employee engagement, and a 
+                            dedication to pushing the boundaries of automotive technology. As Autoline's CEO, Mark is steering the company 
+                            towards new horizons, solidifying its position as a dynamic force in the automotive landscape.
+                        
+                        </p>    
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+        </section>
+
+        <section class = mapAndContactSection>
+            
+            
+            <div class="mapAndContactContainer">
+                
+                <div class = mapContainer>
+
+                    <h1>Find us on the map!</h1>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14469.243176233666!2d67.0512072375122!3d24.955538395048496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb34171924f1313%3A0x942ec2fe1f12e374!2sFlawless%20Marquee!5e0!3m2!1sen!2s!4v1706876474019!5m2!1sen!2s" allowfullscreen= "" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                </div>
+
+                <div class = "contactContainers">
+
+                    <div class = "contactContainer" id = "contactOne">
+                        <i class="fa-solid fa-phone-volume" style = "font-size:30px"></i>
+                        <p>+92 330 1948624 | +92 51 111-11-8365</p>
+                    </div>
+
+                    <div class = "contactContainer" id = "contactTwo">
+                        <i class="fa-solid fa-location-dot" style = "font-size:30px"></i>   
+                        <p>84525 Frere Boulevard, Sammy Springs, Connmouth, Karachi</p> 
+                    </div>
+
+                    <div class = "contactContainer" id = "contactThree">
+                        <i class="fa-regular fa-clock" style = "font-size:30px"> </i>
+                        <p>MON -> THU: 11:00 AM to 04:00PM | FRI: 01:00PM to 04:00PM</p>
+                    </div> 
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+    </body>
+
+    <div class = "footerContent">
+        <div class='information'>
+        
+            <p> <img class='footer-img' src='images/phone.png' width=24> Phone Number: 03233475015</p>
+            
+            <p> <img class='footer-img' src='images/location.png' width=24> Address: B-4/5, Jail Chowrangi, Karachi.</p>
+        </div>
+        
+        <div class='socials'>
+            <a href='www.facebook.com' style="text-decoration:none">
+                <img src='images/fb.png' style='filter: invert(100%);' width=32 title="AutoLine's facebook page">
+            </a>
+            
+            <a href='www.x.com' style="text-decoration:none">
+                <img src='images/x.png' style='filter: invert(100%);' width=32 title="AutoLine's twitter account" >
+            </a>
+            
+            <a href='www.instagram.com' style="text-decoration:none">
+                <img src='images/insta.png' style='filter: invert(100%);' width=32 title="AutoLine's instagram page">
+            </a>
+        </div>
+        
+        <div class='copyright'>
+            <h1>AutoLine</h1>
+            <span id = "cRight">©</span> Copyrights of AutoLine 2024. All Rights Reserved.
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </html>
