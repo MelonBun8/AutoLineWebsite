@@ -1,30 +1,70 @@
 <!DOCTYPE html>
-
 <html>
     
     <head>
         <meta charset = "UTF-8"> <!-- These things like charset in the opening tags are known as attributes-->
         <meta name = "Description:" content = "Autoline Showroom Karachi | Official Website">
         <title>
-            AutoLine | Catalog
+            AutoLine Showroom | Catalogue
         </title>
-        <link rel="icon" href="images/favicon.png">
+		
+		<link rel="icon" href="images/favicon.png">
         <!--including the link to the external css stylesheet -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Bruno+Ace&family=Racing+Sans+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        <link rel="stylesheet" href="CatalogStyle.css">
         
+		<link href = "CatalogStyle.css", rel = "stylesheet">
+		
+		<script src="script.js"></script>
+		
     </head>
-
 
 
     <body>
 
-        <section class = "catalogContainer">
-            <div class = "sideBar">
+
+        <header>
+
+            <div id = "headingPart">
+                <nav class = "headerSection"> 
+                    
+                    <div id = "leftHeaderSection"> 
+                        <img src = "images/LogoGreen.png" alt = "logo" title="Home Page" onClick="openNewPage(1)"/> 
+                    </div> 
+
+                    <div id = "rightHeaderSection">
+                        <button id = "butt1" type="button" onclick=openNewPage(1)>Home</button>
+                        <button id = "butt3" type="button" onclick=openNewPage(4)>Contact & About</button>
+                        <button id = "butt4" type="button" onclick=openNewPage(5)>Sign In / Up</button>
+                    </div>
+
+
+                </nav>
+            </div>
+
+            <div class = landingHeading>
+                <h1>Catalogue</h1>    
+            </div>
+
+        </header>
+			
+		
+		<div class="toggle-flex-wrapper">
+			<div class='top-display-toggle'>
+				<button id='list' class="selected"> <img src='images/listview.png'> LIST</button><!-- Yo...
+				what is this trick--><button id='grid'> <img src='images/gridview.png'> GRID</button>
+			</div>
+		</div>
+
+		
+		<main class="main-content">
+		
+
+			<!--Saad's content START-->
+			<div class = "sideBar">
                 <!--Sidebar will have SEARCH BY KEYWORD, CITY, AND PRICE RANGE-->
                 <div class = "headingTab" id="mainHeadingTab">
                     <h3>SHOW RESULTS BY:</h3>
@@ -67,8 +107,9 @@
                 </div>
 
             </div>
-
-            <div class = "catalogSection">
+			
+			
+			<div id="old-element" class = "catalogSection visible">
 
                 <div class = "stackTile">
                     <div class = featuredDiv>
@@ -188,19 +229,178 @@
                 </div>
 
             </div>
+			<!--Saad's content END-->
 
-        </section>
+			
+			<main id="new-element" class='catalogue-section hidden'>
+				
+				
+				<div class="catalogue-item">
+					
+					<div class='catalogue-item-content'>
+					
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="catalogue-item">
+					<div class = featuredDiv>
+                        FEATURED
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="catalogue-item">
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="catalogue-item">
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="catalogue-item">
+					<div class='catalogue-item-content'>
+						<img src="images/SUV.jpg"/>
+						<h3> Toyota Land Cruiser 1986 </h3>
+						<p class='registered-city' title='registered city'> Karachi</p>
+						<p class='car-information'>
+							<span class='year-built' title='Production Year'>9999</span>
+							<span class='kilometers' title='Kilometers run'>20000km</span>
+							<span class='engine' title='Engine power'> 500cc</span>
+							<span class='transmission' title='Transmission' > automatic</span>
+						</p>
+						
+						<h3>PKR 78 Lacs</h3>
+						<div class='button-flex-wrapper'>
+							<button class='heartButton'><i class="fa-regular fa-heart"></i></button>
+							<button><i class="fa-solid fa-phone"></i> Show Phone Number</button>
+						</div>
+					</div>
+				</div>
+				
+				
+			</main>
+		</main>
+		
+		<footer>
+			<div class='information'>
+				
+				<p> <img class='footer-img' src='images/phone.png' width=24> Phone Number: 03233475015</p>
+				
+				<p> <img class='footer-img' src='images/location.png' width=24> Address: B-4/5, Jail Chowrangi, Karachi.</p>
+			</div>
+			
+			<div class='socials'>
+				<a href='www.facebook.com' style="text-decoration:none">
+					<img src='images/fb.png' style='filter: invert(100%);' width=32 title="AutoLine's facebook page">
+				</a>
+				
+				<a href='www.x.com' style="text-decoration:none">
+					<img src='images/x.png' style='filter: invert(100%);' width=32 title="AutoLine's twitter account" >
+				</a>
+				
+				<a href='www.instagram.com' style="text-decoration:none">
+					<img src='images/insta.png' style='filter: invert(100%);' width=32 title="AutoLine's instagram page">
+				</a>
+			</div>
+			
+			<div class='copyright'>
+				<h1>AutoLine</h1>
+				<span>&copy;</span> Copyrights of AutoLine 2024. All Rights Reserved.
+			</div>
+			
+			
+		</footer>
+
+
+	<!--scripts go here-->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    const oldElement = document.getElementById('old-element');
+    const newElement = document.getElementById('new-element');
+    const clickListButton = document.getElementById('list');
+    const clickGridButton = document.getElementById('grid');
+
+    // Initially hide the newElement
+    newElement.style.display = 'none';
+
+    clickListButton.addEventListener('click', function() {
+        oldElement.style.display = 'block';
+        newElement.style.display = 'none';
+    });
+
+    clickGridButton.addEventListener('click', function() {
+        oldElement.style.display = 'none';
+        newElement.style.display = 'grid';
+    });
+});
+
+	</script>
 
     </body>
 
 
-
-
-
-
-
-
-
-
-
-    </html>
+</html>

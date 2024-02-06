@@ -1,33 +1,153 @@
-body{
-    margin: 0;
-    border: 0;
-    padding:0;
-    width:100vw;
-    overflow-x:hidden;
-    display:block;
-    background-color: #eee;
+body {
+	margin: 0;
 }
 
-h3{
-    margin:0;
-    padding:0;
-}
-
-
-.catalogContainer{
-    display:flex;
+/* nav bar start*/
+#headingPart{
+    
+    display: flex;
     justify-content: center;
 }
 
+.headerSection{
+    width:90vw;
+    display:flex;
+    height:60px;
+    background-color: #46c768;
+    align-items: center;
+    margin-top: 1em;
+    border-radius: 6px;
+}
+
+#leftHeaderSection{
+    display:flex;
+    width: 45vw;
+    align-items: center;
+}
+
+#leftHeaderSection img{
+    width: 250px;
+    height: 45px;
+    padding-left: 20px;
+	cursor: pointer;
+}
+
+#rightHeaderSection{
+    display:flex;
+    height:60px;
+    width: 50vw;
+    justify-content: right;
+    align-items: center;
+}
+
+#rightHeaderSection button:hover{
+    background-color: white;
+    cursor: pointer;
+    color:#46c768;
+}
+
+#rightHeaderSection button{
+    height:25px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    color: white;
+    margin-left: 15px;
+    margin-right:20px;
+    background-color: #46c768;
+    border: 0;
+    font-family: 'Bruno Ace', sans-serif;
+}
+
+.landingHeading{
+    display:flex;
+    color: white;
+    font-size: 3em;
+    justify-content: center;
+    font-family: 'Racing Sans One', sans-serif;
+}
+/* nav bar end*/
+
+
+
+.landingHeading h1 {
+	color: #222;
+}
+
+/* list-grid view section starts here */
+.toggle-flex-wrapper {
+	display: flex;
+	justify-content: center;
+	background-color: #eee;
+	padding-top: 20px;
+}
+
+.top-display-toggle {
+	display: flex;
+    justify-content: flex-end;
+	width: 90%;
+	background-color: #ddd;
+	border: 1px solid silver;
+	margin-bottom: 20px;
+}
+
+.top-display-toggle button img {
+	border: none;
+	width: 16px;
+	margin: 0;
+	font-size: 0;
+}
+
+.top-display-toggle button {
+	border: 1px solid black;
+	margin: 5px;
+	//padding: 5px 5px;
+	border-radius: 3px;
+	background: linear-gradient(to top, #46C768, #04AA6D);
+	cursor: pointer;
+}
+
+.top-display-toggle button:hover {
+	background: #04AA6D;
+}
+
+.top-display-toggle button:active {
+	background: linear-gradient(to top, #04AA6D, #46C768);
+}
+
+button[id='list'] {
+	border-radius: 3px 0px 0px 3px;
+	margin-right: 0px;
+}
+
+button[id='grid'] {
+	border-radius: 0px 3px 3px 0px;
+	border-left: 0px;
+	margin-left: 0px;
+}
+
+.hidden {
+	display: none;
+}
+.pressed {
+	//background-color: lightgray;
+}
+/* list-grid view section ends here */
+
+
+.main-content {
+	display: flex;
+	justify-content: center;
+	background-color: #eee;
+	padding-bottom: 150px;
+}
+
+/* side bar by Saad */
 .sideBar{
     width:230px;
     /*temporary*/
     margin-right:30px;
-}
-
-.catalogSection{
-    width:850px;
-    height:1000px;
 }
 
 .headingTab{
@@ -120,7 +240,12 @@ h3{
 }
 /* sidebar stuff END */
 
-/*main section stuff BEGIN */
+
+
+/*main section stuff by Saad BEGIN */
+.catalogSection{
+    width:850px;
+}
 
 .stackTile{
     margin-bottom: 30px;
@@ -218,4 +343,133 @@ h3{
 .phoneButton{
     background-color: #46c768;
     color:white;
+}
+/*main section stuff by Saad BEGIN */
+
+
+
+/* grid view CSS by Mohsin START*/
+
+.catalogue-section {
+	background-color: #eee;
+	width: 850px;
+	display: none;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px 10px;
+	margin-bottom: 60px;
+}
+
+
+.catalogue-item {
+	font-family: sans-serif;
+	width: 250px;
+	height: 400px;
+	//padding: 10px 10px;
+	background-color: #fff;
+	border: 1px solid silver;
+}
+
+.catalogue-item:hover {
+	border-color: #46c768;
+}
+
+.catalogue-item img {
+	width: 100%;	
+}
+
+.catalogue-item-content {
+	padding: 10px 10px;
+	font-family: "Roboto", sans-serif;
+}
+
+.featuredDiv{
+    position:absolute;
+    width:100px;
+    background-color:firebrick;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+.featuredDiv i{
+    padding-left:3px;
+    font-size: 13px;
+}
+
+.catalogue-item-content h3:first-of-type {
+	color: #46c768;
+}
+
+.year-built, .kilometers, .engine, .transmission {
+	padding-right: 5px;
+	border-right: 1px solid black;
+}
+
+.button-flex-wrapper {
+	display: flex;
+}
+
+.catalogue-item button{
+	color: white;
+	cursor: pointer;
+	background-color: #46c768;
+	width: 100%;
+	height: 30px;
+	border: 0;
+}
+
+.catalogue-item button:active{	
+	background-color: #04AA6D;
+}
+
+button[class='heartButton'] {
+	background-color: #eee;
+	width: 30px;
+	color: black;
+	flex-shrink: 0;
+}
+/* grid view CSS by Mohsin END*/
+
+
+/* footer starts from here */
+footer {
+	background-color: #46c768;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer-img {
+	position: relative;
+	top:9px;
+}
+
+.information {
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 15px;
+}
+
+.socials {
+	display: flex;
+	align-items: center;
+	min-width: 150px;
+	justify-content: space-between;
+}
+
+.copyright {
+	align-items: center;
+	padding: 15px 0px 0px 0px;
+	font-family: 'Bruno Ace', sans-serif;
+	font-size: 12px;
+}
+.copyright span {
+	font-family: sans-serif;
+	font-size: 15px;
+}
+
+.copyright h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 44px;
+	color:white;
+	margin: 0;	
 }
