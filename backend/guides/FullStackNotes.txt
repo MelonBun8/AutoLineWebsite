@@ -1,0 +1,5 @@
+Backend == Server Side
+Frontend == Client Side
+Backend for full stack is REST API (interface for secure info exchange on internet)
+Backend gets CRUD operations from frontend
+HTTP Request message: (POST, GET, PATCH/PUT, DELETE)

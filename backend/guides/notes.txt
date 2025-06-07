@@ -1,0 +1,52 @@
+To setup backend: 
+    npm init -y
+    npm install express
+    npm i nodemon -D
+    in package.json specify scripts, description and project name if needed (also has dependencies)
+    gitignore the node_modoules folder
+
+
+Setup some basic routing for root.js, added basic middleware of static filing in public folder, made routing for all/unknown requests
+added handling of json files 
+setup public api for CORS
+
+Middleware is any functionality/logic that is placed between the HTTP request and the API response.
+Middleware adds functionality to backend REST API, and can also do some preliminary processing to requests before
+they get to controller where they are processed and completed.
+Middleware has req, res, and next in it's function signature
+
+During postman testing for POST requests, under the body tab add Key: Content-Type, Value: application/json to be able to send a raw JSON in the body tab in the post method request
+
+
+JWT: (Jason Web Tokens)
+Form of user identification AFTER user authentication. When user has logged in, they are authenticated.
+Right after this, our REST API will issue the client app an Access Token + Refresh Token.
+
+Access Tokens last a short time (5 - 15 minutes) while refresh tokens are much longer (hours to days)
+
+Rest API sends and recieves access tokens as JSON data. These tokens are stored in app state (automatically lost when app closed)
+Access tokens are NOT stored in local storage or cookies because if you can store it anywhere with JS, hackers can get it with JS.
+
+REST API issues refresh tokens in an httpOnly cookie. These cookies cannot be accessed with JS.
+
+If refresh tokens expire, the user must log in again. 
+Lastly, refresh tokens must not have the ability to issue new refresh tokens as that would give endless access.
+
+Overall process:
+    1. Issue refresh + access tokens after user authentication. 
+    2. The client / user app can then access REST API's protected routes with the access token
+    3. REST API verifies the token with middleware everytime the token is used to make a request.
+    4. When the access token expires, user app must send a refresh token to rest API's refresh endpoint to get new access token
+    (Of course, the refresh endpoint will verify the refresh token too, which can expire or end with a logout)
+
+Our app's workflow:
+User logs in -> They send their username + password -> 
+    - if match found, a refresh token is set to an httpOnly cookie (not handled by frontend, handled by browser cookies)
+    - frontend gets an accesstoken, and uses it to make API requests to protected pages like /dash, /dash/users, etc.
+    - frontend adds accessToken to Authorization header with format 'Bearer xyzabcaccesstokenhereblahblah'
+    - if accessToken expires but refreshToken is still active, frontend calls  /refresh, and if the refresh token in browser sent with cookies
+    is still active, a new accessToken generated, else the user needs to log in again.
+    - Logout clears both tokens
+
+NOTE: this means client needs to add the accessToken to their header with EVERY HTTP request to a protected page (that needs authentication)
+But NOT the refresh token. Again, this is handled only by the browser (adds it to request headers) and backend

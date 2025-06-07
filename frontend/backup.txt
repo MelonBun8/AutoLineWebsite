@@ -1,0 +1,131 @@
+import { useState, useEffect } from "react"
+import { useUpdateDealReportMutation, useDeleteDealReportMutation } from "./dealReportsApiSlice" // to get mutation functions to update/delete deal-report
+import { useNavigate } from 'react-router-dom' // to move back to deal reports list once updated/deleted
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"  // save and delete icons
+
+/* Our form will allow you to edit the:
+  - Owner User (Non-Editable)
+  - Purchased From (alphabetical)
+  - Vehicle Details: (Collapsible)
+    - Make (alphabetical)
+    - Color (alpahabetical)
+    - Chassis Number (alphanumeric)
+    - Region Number (alphanumeric)
+  - Purchase Price (numeric)
+  - Voucher Number (alphanumeric)
+  - Sold To (alpahabetical)
+  - Sale Price (numeric)
+  - Commission Amount (numeric)
+  - Expenses (numeric)
+*/
+  // setting up REGEX for the forms
+const ALPHA_REGEX = /^[A-z]+$/ // plus means string not character
+const NUM_REGEX = /^[0-9]+$/
+const ALPHANUM_REGEX = /^[A-z0-9]+$/
+
+
+const EditDealReportForm = ({dealReport}) => { // destructuring and obtaining the deal report data
+
+  const [updateDealReport, { // trigger function (not immediately activated upon declaration)
+      isLoading,
+      isSuccess,
+      isError,
+      error
+  }] = useUpdateDealReportMutation()
+  
+  const [deleteDealReport, {
+      isSuccess: isDelSuccess, // renaming the    values to be unique from updateDealReport
+      isError: isDelError,
+      error: delerror
+  }] = useDeleteDealReportMutation()
+
+  const navigate = useNavigate()
+
+  // declaring and setting initial states AND setter functions
+  const [purchasedFrom, setPurchasedFrom] = useState(dealReport.purchasedFrom)
+  const [validPurchasedFrom, setValidPurchasedFrom] = useState(false)
+  const [make, setMake] = useState(dealReport.vehicleDetails.make)
+  const [validMake, setValidMake] = useState(false)
+  const [color, setColor] = useState(dealReport.vehicleDetails.color)
+  const [validColor, setValidColor] = useState(false)
+  const [chassisNumber, setChassisNumber] = useState(dealReport.vehicleDetails.chassisNumber)
+  const [validChassisNumber, setValidChassisNumber] = useState(false)
+  // ... and so on for other fields, please fill in the rest
+
+  // Now useEffects to apply / set the usernames only if they're valid:
+  useEffect(() => {
+    setValidPurchasedFrom(NUM_REGEX.test(purchasedFrom))
+  }, [purchasedFrom])
+
+    // ... and so on 
+
+  useEffect(() => { // Empty the form once the deal-report has successfully been edited or deleted
+    console.log(isSuccess)
+        if (isSuccess || isDelSuccess) {
+            setPurchasedFrom('')
+            setMake('')
+            // ... and so on
+            navigate('/dash/deal-reports')
+        }
+    }, [isSuccess, isDelSuccess, navigate])
+
+  const onPurchasedFromChanged = e => setPurchasedFrom(e.target.value)
+
+  const onSaveDealReportClicked = async () => {
+    await updateDealReport({ id: dealReport.id, purchasedFrom, vehicleDetails = {make, color, chassisNumber, regionNumber} })
+  }
+
+  const onDeleteDealReportClicked = async () => {
+    await deleteDealReport({ id: dealReport.id })
+  }
+
+  const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
+  const validPurchasedFromClass = !validPurchasedFrom ? 'form__input--incomplete' : ''
+
+  const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+
+  const content = (
+    <>
+        <p className = {errClass}>{errContent}</p>
+        
+        <form className="form" onSubmit={e => e.preventDefault()}>
+            <div className = 'form__title-row'>
+                <h2>View / Edit Deal Report</h2>
+                
+                <div className = 'form__action-buttons'>
+                  <button
+                    className = 'icon-button'
+                    title = 'Save'
+                    onClick = {onSaveDealReportClicked}
+                    disabled = {!canSave}
+                  >
+                    <FontAwesomeIcon icon = {faSave} />
+                  </button>
+
+                  <button
+                      className="icon-button"
+                      title="Delete"
+                      onClick={onDeleteUserClicked}
+                  >
+                      <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
+                </div>
+            </div> 
+
+            <label className = 'form__label' htmlFor = 'purchasee'>
+              Purchased From: <span className = 'nowrap'>[Numeric]</span></label>
+            <input 
+              className = {`form__input ${validPurchasedFromClass}`}
+              onChange = {onPurchasedFromChanged}
+            />
+            
+            {/* And so on for remaining fields */}
+        
+        </form>
+    </>
+  )
+
+}
+
+export default EditDealReportForm
