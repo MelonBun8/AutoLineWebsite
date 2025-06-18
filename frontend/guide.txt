@@ -126,3 +126,6 @@ Authentication vs Authorization:
 After logging in, app users will be issued JSON web tokens (JWT)
 JWT has an authorization header sent with every HTTP request. This allows access to only permitted API endpoints.
 API endpoints then in turn provide data resources.
+
+-- REDUX TOOLKIT --
+dispatch() is the only way to trigger state changes in RTK Query 

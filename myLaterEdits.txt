@@ -1,0 +1,24 @@
+
+
+Test refresh and access token if they do keep sending requests (in authApiSlice.js) post-logout by changing times of access and refresh to much shorter intervals (Video time slot is 5:36:00)
+
+Search + filter bar in the deal-reports component
+
+Add the Delivery Letter Stuff too 
+
+Mobile UI integration 
+
+Ask Nomaan Uncle if this Active Status shit is required or not
+UI stuff, adding a different loader etc. for later (eg: Add Autoline SHowroom Logo to the front page of the dashboard and main page  )
+
+DONEZIES _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Create New Deal Report form (compare createDealReportForm to the createNote form from the MERN project GitHub page)
+
+Apply useTitle hook to all react webpages (I have only setup App.jsx for now)
+
+Make createDealReport errors look better
+
+Correct that warning in the file
+
+Add spinner component to Loading instead of just text Loading... (DONE! But look up other spinners that may be better, perhaps in center of screen?)

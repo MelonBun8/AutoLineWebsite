@@ -14,11 +14,14 @@ export const dealReportsApiSlice = apiSlice.injectEndpoints({  // RTK query will
     endpoints: builder => ({ // adding an endpoint to the dealReportsApiSlice
         
         getDealReports: builder.query({ // define a query endpoint
-            query: () => '/deal-reports', // since baseURL already set in apiSlice.js, this will create the whole backend URL
-            validateStatus: (response, result) => { // what happens in a successful response
-                return response.status === 200 && !result.isError // we add isError check as well cuz Redux API has a quirk where it always sends 200 even for faulty responses.
-            },
+            
+            query: () => ({
+                url: '/deal-reports', // since baseURL already set in apiSlice.js, this will create the whole backend URL
+                validateStatus: (response, result) => {return response.status === 200 && !result.isError}, // what happens in a successful response
+                // note how the isError we set in the backend is being used here
+            }), // we add isError check as well cuz Redux API has a quirk where it always sends 200 even for faulty responses.
             // keepUnusedDataFor: 5, // how long to keep cached data for this query in redux store after last component stops using it (unsubscribes from it) [for now at 5 seconds only for dev purposes, usually 60 seconds or so]
+            
             transformResponse: responseData => { // process raw data received from backend before storing in redux
                 const loadedDealReports = responseData.map(dealReport => { // normalize data for frontend
                     dealReport.id = dealReport._id // we convert the _id property to id because of our data normalization above (getInitialState) which looks for an id property, not _id
@@ -26,6 +29,7 @@ export const dealReportsApiSlice = apiSlice.injectEndpoints({  // RTK query will
                 });
                 return dealReportsAdapter.setAll(initialState, loadedDealReports) 
             },
+            
             providesTags: (result, error, arg) => { 
                 if (result?.ids) {
                     return [

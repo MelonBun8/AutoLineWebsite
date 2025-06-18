@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { apiSlice } from '../../app/api/apiSlice'
-import { logOut } from '../auth/authSlice' // logout is a reducer / action creator gotten from authSlice.actions
+import { logOut, setCredentials } from '../auth/authSlice' // logout and setCredentials are reducer / action creators gotten from authSlice.actions
 
 export const authApiSlice = apiSlice.injectEndpoints({ // all these are mutation functions that can manipulate the redux store
 
@@ -14,19 +15,43 @@ export const authApiSlice = apiSlice.injectEndpoints({ // all these are mutation
         }),
 
         sendLogout: builder.mutation({
-            query: () => ({
-                url: '/auth/logout',
-                method: 'POST',
-                credentials: 'include'
-            }),
-            async onQueryStarted(arg, { dispatch, queryFulfilled }) { // onQueryStarted is provided by RTKquery inside our endpoint
-                try { // it needs an arg that we're not using, and dispacth and queryFulfilled (evident from name)
-                    await queryFulfilled
-                    dispatch(logOut()) // dispatch reducer we got from authSlice (sets token to null in local state)
-                    dispatch(apiSlice.util.resetApiState()) // to clear the apiSlice as well (clearing cache and query subscriptions)
+            query: () => {
+                // console.log('sendLogout query function called')
+                return {
+                    url: '/auth/logout',
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            },
+            async onQueryStarted(navigate, { dispatch, queryFulfilled }) {
+                // console.log('sendLogout onQueryStarted called')
+                try {
+                    const result = await queryFulfilled
+                    // console.log('queryFulfilled successful:', result)
+    
+                    dispatch(logOut())
+                    // Use navigate for consistency
+                    if (navigate && typeof navigate === 'function') {  
+                        navigate('/') 
+                    }
+
+                    setTimeout(()=>{ // some kinda bug in tutorial where accessToken requests continuously sent even after logging out
+                        dispatch(apiSlice.util.resetApiState())
+                    }, 1000)
+                    
+
+                    // setTimeout(() => { // not using this method as it's hacky
+                    //     dispatch(apiSlice.util.resetApiState())
+                    // }, 500) // Small delay to allow isSuccess to activate and successfully navigate back to front public page
+                    
+                    
+
+                    console.log('🎉 Logout process completed successfully')
                 } catch (err) {
-                    console.log(err)
-                } // doing all the above inside an onQueryStarted removes the need to import useDispatch into a component, and dispatching each ove these in every component. (Takes care of it when logout endpoint is called)
+                    // console.error('❌ queryFulfilled failed:', err)
+                    // console.error('❌ Error status:', err.status)
+                    // console.error('❌ Error data:', err.data)
+                }
             }
         }),
 
@@ -34,17 +59,20 @@ export const authApiSlice = apiSlice.injectEndpoints({ // all these are mutation
             query: () => ({ // NOTE: While this function doesn't directly manipulate redux state, it does indirectly, by having a new accessToken generated, thus better to treat as mutation
                 url: '/auth/refresh',
                 method: 'GET',
-            }),
-            // async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-            //     try {
-            //         const { data } = await queryFulfilled
-            //         console.log(data)
-            //         const { accessToken } = data
-            //         dispatch(setCredentials({ accessToken }))
-            //     } catch (err) {
-            //         console.log(err)
-            //     }
-            // }
+             }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) { // setting up this onQueryStarted prevents the need to import the
+                // setCredentials action creator + useDispatch in EVERY component where we want the refresh logic 
+                // (This allows us to, anywhere we use the refresh mutation, to automatically setCredentials in the redux store as well)
+                try {
+                    const { data } = await queryFulfilled
+                    console.log(data) // the data would be the access token
+                    const { accessToken } = data
+                    dispatch(setCredentials({ accessToken }))
+                 } 
+                 catch (err) {
+                     console.log(err)
+                 }
+             }
         }),
     
     })

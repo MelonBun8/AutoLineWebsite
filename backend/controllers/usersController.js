@@ -5,6 +5,10 @@ const asyncHandler = require('express-async-handler') // stops need for too many
 // basically handles the errors more elegantly (WIKI: Simple middleware for handling exceptions inside of async express routes and passing them to your express error handlers.)
 const bcrypt = require('bcrypt') // to hash / encrypt a password before saving it into a database (We never store plaintext passwords)
 
+// BY THE WAYYYY, there is an easier alternative to express-async handler that doesn't require every handler to be wrapped in 
+// asyncHandler, it's called 'express-async-errors'. Then all you need to do is require it in server.js. EASY!
+// it would then just be for example: const getAllUsers = async (req,res) => {.....}
+
 // @desc Get all users
 // @route GET /users
 // @access Private
@@ -28,12 +32,14 @@ const createNewUser = asyncHandler(async (req, res) => {
     const { username, password, roles } = req.body // extracting data from the request
     
     // Confirm data
-    if (!username || !password || !Array.isArray(roles) || !roles.length){
+    if (!username || !password){
         return res.status(400).json({ message: 'Bad request. All fields are required' }) // these are explicit handling for specific errors, other non-specified errors are handled by async error handler and go to our defined error handling middleware
     } // we explicitly create error handling for this error because we want it to show on our frontend
     
     // Check for duplicates in database
-    const duplicate = await User.findOne({ username }).lean().exec() // we call exec when we're passing data into the query (it also returns promise, which is helpful)
+    const duplicate = await User.findOne({ username }).collation({locale:'en', strength:2}).lean().exec() 
+    // collation enfoces case insensitivity (There cannot be 2 'Nomaan's) 
+    // we call exec when we're passing data into the query (it also returns promise, which is helpful)
 
     if (duplicate) {
         return res.status(409).json({ message: 'Duplicate username' })
@@ -42,8 +48,9 @@ const createNewUser = asyncHandler(async (req, res) => {
     // Hash password
     const hashedPwd = await bcrypt.hash(password, 10) // 10 salt rounds to encrypt the password
 
-    const userObject = { username, "password": hashedPwd, roles } // if variable name is same as key, you can just specify the key and it'll be auto destructured (this is called object literal shorthand)
-
+    const userObject = (!Array.isArray(roles) || !roles.length) // if variable name is same as key, you can just specify the key and it'll be auto destructured (this is called object literal shorthand)
+    ? {username, "password":hashedPwd} // if user does not specify roles, do not send roles object, default "employee" used
+    : {username, "password":hashedPwd, roles}
     // Create and store new user
     const user = await User.create(userObject)
 
@@ -74,7 +81,7 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate
-    const duplicate = await User.findOne({username}).lean().exec() // note it is an object being sent in findOne, uses object literal shorthand for username in this case. 
+    const duplicate = await User.findOne({username}).collation({ locale: 'en', stregth: 2}).lean().exec() // note it is an object being sent in findOne, uses object literal shorthand for username in this case. 
 
     // Allow updates to original user, not other duplicates with the same name, also no allowing user to change to preexisting username
     if (duplicate && duplicate?._id.toString() !== id) {

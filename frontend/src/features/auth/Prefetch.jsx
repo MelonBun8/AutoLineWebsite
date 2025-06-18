@@ -8,27 +8,34 @@ import { Outlet } from 'react-router-dom';
 
 
 const Prefetch = () => {
-  useEffect(() => { 
+  
+    useEffect(() => { 
 
-    console.log('subscribing') // this is to show us how react strict mode mounts, unmounts and re-mounts components for error checking
-    // this mounting cycle is only in development mode in strict mode
-    const deal_reports = store.dispatch(dealReportsApiSlice.endpoints.getDealReports.initiate())
-    const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate()) 
-    // above we are setting up manual subscriptions that will remain active
-    // This is a manual dispatch of RTK Query's .initiate() method.
-    // RTK Query usually sets up subscriptions automatically when you use hooks like useGetUsersQuery(), but here you're doing it manually in a shared parent component.
-    // Doing this keeps the data "warm" (cached and synced) and prevents it from refetching unnecessarily when you navigate between child routes.
+      store.dispatch(dealReportsApiSlice.util.prefetch('getDealReports', 'dealReportsList', {force:true}))
+      store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', {force:true}))
 
-    return () => { // unsubscribe if we leave the protected pages. (Cleanup function of useEffect, only runs when component dismounts)
-        console.log('unsubscribing')
-        deal_reports.unsubscribe()
-        users.unsubscribe()
-    }
-
-  }, []); // No dependencies means the useEffect will only run when the component mounts
-
-  return <Outlet /> // since we know outlet is wrapped around all child components / pages, we'll wrap this prefetch component around all protected pages
-  // help us when we want to retain state and pre-filled forms when we refresh or return from children
+    }, []); // No dependencies means the useEffect will only run when the component mounts
+    
+    return <Outlet /> // since we know outlet is wrapped around all child components / pages, we'll wrap this prefetch component around all protected pages
+    // help us when we want to retain state and pre-filled forms when we refresh or return from children
 }
 
 export default Prefetch
+
+
+// REPLACED STUFF WITHIN useEFFECT() above!
+//  console.log('subscribing') // this is to show us how react strict mode mounts, unmounts and re-mounts components for error checking
+//     // this mounting cycle is only in development mode in strict mode
+//     const deal_reports = store.dispatch(dealReportsApiSlice.endpoints.getDealReports.initiate())
+//     const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate()) 
+//     // above we are setting up manual subscriptions that will remain active
+//     // This is a manual dispatch of RTK Query's .initiate() method.
+//     // RTK Query usually sets up subscriptions automatically when you use hooks like useGetUsersQuery(), but here you're doing it manually in a shared parent component.
+//     // Doing this keeps the data "warm" (cached and synced) and prevents it from refetching unnecessarily when you navigate between child routes.
+
+//     return () => { // unsubscribe if we leave the protected pages. (Cleanup function of useEffect, only runs when component dismounts)
+//         console.log('unsubscribing')
+//         deal_reports.unsubscribe()
+//         users.unsubscribe()
+//     }
+

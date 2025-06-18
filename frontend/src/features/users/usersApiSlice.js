@@ -21,10 +21,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({  // RTK query will creat
     endpoints: builder => ({ // adding / injecting an endpoint to the usersApiSlice, which in turn injects into the main apiSlice for Redux RTK query 
         
         getUsers: builder.query({ // define a query endpoint (The GET endpoint / query / retriever)
-            query: () => '/users', // since baseURL already set in apiSlice.js, this will create the whole backend URL
-            validateStatus: (response, result) => { // what happens in a successful response
-                return response.status === 200 && !result.isError // we add isError check as well cuz Redux API has a quirk where it always sends 200 even for faulty responses.
-            },
+            query: () =>  ({
+                url: '/users', // since baseURL already set in apiSlice.js, this will create the whole backend URL
+                validateStatus: (response, result) => { // what happens in a successful response
+                    return response.status === 200 && !result.isError // we add isError check as well cuz Redux API has a quirk where it always sends 200 even for faulty responses.
+                },
+            }),
             // keepUnusedDataFor: 5, // how long to keep cached data for this query in redux store after last component stops using it (unsubscribes from it) [for now at 5 seconds only for dev purposes, usually 60 seconds or so]
             // default value for above is 60 sec. Note that this timer only activates once no component has a subscription to it anymore. 
             // OUr UsersList fetches it but the immediately unsubscribes. To prevent that, we setup Prefetch for protected pages in auth.

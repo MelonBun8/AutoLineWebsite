@@ -33,6 +33,11 @@
   margin-bottom: 0.5em;
 }
 
+.errmsg a:any-link{ /*anchor tags with CSS className "errmsg"*/
+  color: var(--ERROR);
+  text-decoration: underline;
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -335,6 +340,15 @@ tr {
   gap: 0.25em;
 }
 
+.form__error {
+  font-size: 80%; 
+  color: #dc3545; 
+  margin-top: 5px; 
+  margin-bottom: 10px; 
+  display: block; 
+  /* OR display: inline-block; if you want it to behave like text but still allow margin/padding */
+  font-weight: bold;
+}
 // media queries
 
 @media screen and (max-width: 400px) {
@@ -378,40 +392,4 @@ tr {
   .form__action-buttons {
     position: static;
   }
-}
-
-
-// Search component CSS
-/* Add these styles to your CSS file */
-
-.search-container {
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 500px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #0056b3;
-  box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.25);
-}
-
-.search-input::placeholder {
-  color: #888;
-}
-
-.no-results {
-  color: #666;
-  text-align: center;
-  margin-top: 20px;
-  font-style: italic;
 }

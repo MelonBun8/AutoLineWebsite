@@ -1,15 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
-
-import { useSelector } from 'react-redux'
-import { selectDealReportById } from './dealReportsApiSlice' // append ./ here if app doesn't work
+import { useGetDealReportsQuery } from './dealReportsApiSlice'
+import { memo } from 'react'
 
 import React from 'react'
 
-const DealReport = ({dealReportId}) => {
+const DealReport = ({ dealReportId }) => {
     
-    const dealReport = useSelector(state => selectDealReportById(state, dealReportId))
+    const { dealReport } = useGetDealReportsQuery("dealReportsList", {
+        selectFromResult: ({ data }) => ({
+            dealReport: data?.entities[dealReportId]
+        }),
+    })
 
     const navigate = useNavigate()
     
@@ -53,4 +56,6 @@ const DealReport = ({dealReportId}) => {
 
 }
 
-export default DealReport
+const memoizedDealReport = memo(DealReport) // Now the component on ly re-renders if there's changes in the data
+
+export default memoizedDealReport

@@ -1,19 +1,26 @@
-// this is a "protected route" and cannot be accessed by any random visitor, only those that have logged in, hence the name
-// usually protected routes are: Only accessible post-login, use the "user" global state in redux, use tokens in local storage, and checks like if(!user) navigate('/login') 
+// LOGIN PAGE
+
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
+import PulseLoader from 'react-spinners/PulseLoader'
+import useTitle from '../../hooks/useTitle'
+
+import usePersist from '../../hooks/usePersist'
 
 const Login = () => {
+
+  useTitle('Login | Autoline')
 
   const userRef = useRef() // useRef is to either hold mutable values that persist across re-renders without re-rendering themselves OR to refer to specific DOM element rendered by a component
   const errRef = useRef()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  const [persist, setPersist] = usePersist()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -54,9 +61,11 @@ const Login = () => {
 
   const handleUserInput = (e) => setUsername(e.target.value)
   const handlePwdInput = (e) => setPassword(e.target.value)
+  const handleToggle = () => setPersist(prev => !prev)
+
   const errClass = errMsg ? 'errmsg' : 'offscreen'
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <PulseLoader color={'#FFF'} />
 
 
   const content = ( // remember the classnames below align with the CSS. Also notice that this is a public page, so we need a separately defined header and footer for this page 
@@ -95,6 +104,17 @@ const Login = () => {
                     />
                     {/*  If you only provide one button on a form, it is the submit button by default. Notice we have an entry for 'value', because that allows controlled inputs, allowing us to know exactly what user is typing at anytime and apply real time conditional logic like a red border for invalid password */}
                     <button className="form__submit-button">Sign In</button> 
+
+                    <label htmlFor="persist" className="form__persist">
+                        <input
+                            type = "checkbox"
+                            className = "form__checkbox"
+                            id="persist"
+                            onChange = {handleToggle}
+                            checked = {persist}  
+                        />
+                        Trust This Device (Stay Logged In)
+                      </label>
                 </form>
             </main>
         

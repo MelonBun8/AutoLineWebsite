@@ -23,9 +23,9 @@ const login = asyncHandler(async(req, res) => {
 
     if (!match) return res.status(401).json( {message: 'Unauthorized'} )
     console.log('Successfully logged in!!!')
-    console.log(username)
-    console.log(password)
-    const accessToken = jwt.sign(
+    // console.log(username)
+    // console.log(password)
+    const accessToken = jwt.sign( 
         {
             "UserInfo": {
                 "username" : foundUser.username,
@@ -87,7 +87,7 @@ const refresh = (req, res) => { // client calls refresh endpoint with accessToke
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '1m' }
+                { expiresIn: '15m' }
             )
 
             res.json({ accessToken })
@@ -104,6 +104,7 @@ const logout = (req, res) => {
     if (!cookies?.jwt) {console.log('No cookies sent!')}
     if (!cookies?.jwt) {return res.sendStatus(204)} // no content
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true})
+    console.log('Successfully logged out properly with 200 code!')
     res.json({ message: 'Cookie cleared' })
 }
 

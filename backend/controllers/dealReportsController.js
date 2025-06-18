@@ -31,6 +31,7 @@ const getAllDealReports = asyncHandler( async (req, res) =>{
 // @access private
 const createNewDealReport = asyncHandler( async (req, res) => {
 
+    console.log(req.body)
     const {user, date, purchasedFrom, vehicleDetails, purchasePrice, voucherNumber, soldTo, salePrice, commissionAmount, expenses} = req.body
 
     // confirm the data (only the required (not optional) fields are checked to be present)
@@ -39,14 +40,14 @@ const createNewDealReport = asyncHandler( async (req, res) => {
     }
 
     // check if user is valid:
-    const userToSave = await User.findById(user).exec()
+    const userToSave = await User.findOne({username: user}).exec()
 
     if(!userToSave){// not a valid user
         return(res.status(400).json({message: 'User does not exist'}))
     }
 
     const dealReportData = {
-        user,
+        user:userToSave._id,
         date,
         purchasedFrom,
         vehicleDetails,

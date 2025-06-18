@@ -1,0 +1,2 @@
+Permissions and Roles:
+- employee status users cannot view protected routes

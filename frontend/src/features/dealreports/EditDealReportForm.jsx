@@ -3,12 +3,15 @@ import { useUpdateDealReportMutation, useDeleteDealReportMutation } from "./deal
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import useAuth from "../../hooks/useAuth"
 
 const ALPHA_REGEX = /^[A-Za-z\s]+$/
 const NUM_REGEX = /^[0-9]+$/
 const ALPHANUM_REGEX = /^[A-Za-z0-9\s-]+$/
 
 const EditDealReportForm = ({ dealReport }) => {
+  
+  const { isManager, isAdmin } = useAuth()
   const navigate = useNavigate()
 
   const [updateDealReport, { isLoading, isSuccess, isError, error }] = useUpdateDealReportMutation()
@@ -102,7 +105,19 @@ const EditDealReportForm = ({ dealReport }) => {
 
   const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
   const errContent = error?.data?.message || delerror?.data?.message || ""
-
+  
+  let deleteButton = null
+  if (isManager || isAdmin){
+    deleteButton = (
+      <button
+        className='icon-button'
+        title='Delete'
+        onClick={onDeleteDealReportClicked}
+      >
+        <FontAwesomeIcon icon={faTrashCan} />
+      </button>
+    )
+  }
   const renderInput = (label, name, type = "text", note = "") => (
     <>
       <label className="form__label" htmlFor={name}>{label} {note && <span className="nowrap">[{note}]</span>}</label>
@@ -128,9 +143,7 @@ const EditDealReportForm = ({ dealReport }) => {
             <button className="icon-button" title="Save" onClick={onSaveDealReportClicked} disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
             </button>
-            <button className="icon-button" title="Delete" onClick={onDeleteDealReportClicked}>
-              <FontAwesomeIcon icon={faTrashCan} />
-            </button>
+            {deleteButton}
           </div>
         </div>
 

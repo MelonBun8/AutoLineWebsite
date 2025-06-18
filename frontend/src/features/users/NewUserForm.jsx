@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons' // the save button icon
 import { ROLES } from '../../config/roles'
+import useTitle from '../../hooks/useTitle'
 
 const USER_REGEX = /^[A-z]{3,20}$/ // ^ means beginning, [A-z] means any upper or lowercase letter from A to Z. length 3 to 20, $ is for end
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/ //for the password, alphanumeric characters, some special symbols, length 4 to 12
 
 const NewUserForm = () => {
+
+  useTitle('New User | Autoline')
 
   const [addNewUser, { // we get an addNewUser 'trigger' function (mutation hook) to call within the component (not activated immediately) 
     // (Unlike the query in UsersList for example, which is only an object, not a tuple of trigger func and object, also it's called immediately in UsersList) 
@@ -55,7 +58,7 @@ const NewUserForm = () => {
     setRoles(values)
   }
 
-  const canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading // checking if he newly-created user can be saved
+  const canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading // checking if the newly-created user can be saved
   
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
