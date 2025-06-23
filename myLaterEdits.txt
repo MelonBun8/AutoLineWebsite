@@ -1,17 +1,35 @@
-
-
 Test refresh and access token if they do keep sending requests (in authApiSlice.js) post-logout by changing times of access and refresh to much shorter intervals (Video time slot is 5:36:00)
 
-Search + filter bar in the deal-reports component
-
-Add the Delivery Letter Stuff too 
+Add the Delivery Letter Stuff too ( 
+    LATER EDITS:
+        ADD JWT SECURITY TO ROUTE FILES LATER!!
+        MAKE THE FILTER BACKEND CONTROLLER BETTER SUITED TO HANDLING DIFFERENT DATA TYPES OF DIFFERENT FILTERS        
+        CHECK DEALREPORT CONTROLLER's createNewDeal report, user is being passed as a username but I think the frontend is actually sending the userID and I just in a hurry copied my 
+)
 
 Mobile UI integration 
 
-Ask Nomaan Uncle if this Active Status shit is required or not
-UI stuff, adding a different loader etc. for later (eg: Add Autoline SHowroom Logo to the front page of the dashboard and main page  )
+Paginate results later on
 
+
+BEFORE PUSBLISHING /  AIRING THe website:
+- be sure to check the pollingInterval / token lifetimes please (changed for sake of backend testing)
+refactoring:
+- ensure your github project has all the libs by running npm i to make sure since I didn't copy the node-modules folder
+
+Dark Mode
+Form current selection filed BLUE side ribbon
+Add Rate Limiter, Load Balancer
+Ask Nomaan Uncle if this Active Status shit is required or not
+UI stuff, adding a different loadingAnimation etc. for later (eg: Add Autoline SHowroom Logo to the front page of the dashboard and main page  )
+Also what things he wants as required for both dealReports and deliveryLetters (in the backend, for now only very basics left as required, rest is optional)
+Later on after getting these form requirements, add them to the deliveryLetters app.
+
+My PATCH route for delivery Letters currently accepts full objects
+Make delivery Letter update route a PATCH instead of PUT route, only sending required fields to be updated, (That'd mean making an extra Joi schema too)
 DONEZIES _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Search + filter bar in the deal-reports component
 
 Create New Deal Report form (compare createDealReportForm to the createNote form from the MERN project GitHub page)
 

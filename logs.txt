@@ -1,0 +1,6 @@
+I'm done with the backend (including the testing part)
+through testing, I found the following issues:
+- I was not destructuring "value" correctly in create and update, leading to issues, I simply changed value: validatedLetter and that problem was solved.
+- I was sending detailed deliveryLetters on search and filter, which I don't need, since again, it's only gonna be used for displaying the bare-bones shit on the list page, so I fixed that to show only the barebones things
+- I thought timestamps would be included automatically despite using 'select' in my mongoose query, that was wrong, I had to manually include it.
+- Everything else is working fine :) Including the error codes like srNo not being a number etc.

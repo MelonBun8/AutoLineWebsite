@@ -349,76 +349,12 @@ tr {
   /* OR display: inline-block; if you want it to behave like text but still allow margin/padding */
   font-weight: bold;
 }
-/* || SEARCH BAR CONTAINER */
-.search-bar-container {
-  width: 100%;
-  height: 3rem; /* 48px */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem; /* Adjust if needed (matches your .search-bar{margin-bottom:250px}) */
+
+// SEARCH BAR SHIT
+.search-bar{
+  margin-bottom:250px;
 }
 
-/* || SEARCH BAR */
-.search-bar {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: var(--TABLE-BGCOLOR); /* White background */
-  border: 1px solid var(--BORDER-COLOR); /* White border */
-  border-radius: 1.5rem; /* Rounded corners */
-  overflow: hidden; /* Ensures child elements respect border-radius */
-}
-
-/* Input field */
-.search-bar input {
-  width: 80%;
-  height: 100%;
-  padding: 0 1rem;
-  background-color: var(--TABLE-BGCOLOR);
-  color: var(--TABLE-COLOR); /* Black text */
-  border: none;
-  outline: none;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-
-/* Dropdown select */
-.search-bar select {
-  width: 20%;
-  height: 100%;
-  padding: 0 0.5rem;
-  background-color: var(--TABLE-BGCOLOR);
-  color: var(--TABLE-COLOR);
-  border: none;
-  border-left: 1px solid var(--BORDER-COLOR); /* Divider line */
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-}
-
-/* Placeholder text */
-.search-bar input::placeholder {
-  color: var(--INACTIVE); /* lightgray */
-  opacity: 1; /* Fix for Firefox */
-}
-
-/* Focus states (accessibility) */
-.search-bar input:focus,
-.search-bar select:focus {
-  outline: 2px solid var(--LINK-COLOR); /* Highlight on focus */
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .search-bar-container {
-    height: 2.5rem; /* Smaller on mobile */
-  }
-  .search-bar input,
-  .search-bar select {
-    font-size: 0.875rem; /* Smaller text */
-  }
-}
 // media queries
 
 @media screen and (max-width: 400px) {

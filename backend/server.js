@@ -49,6 +49,9 @@ app.use('/users', require('./routes/userRoutes'))
 // routing for deal reports CRUD
 app.use('/deal-reports', require('./routes/dealReportRoutes'))
 
+// routing for delivery letters CRUD
+app.use('/delivery-letters', require('./routes/deliveryLetterRoutes'))
+
 // now as you can see, we have multiple middleware for the root route that executes IN ORDER. first the static file serving, THEN the 
 // root.js being delegated to. In the middleware, if any send() response is called, none of the other following middleware execute and if
 // next() is called, then the next middleware for that route is moved to.
