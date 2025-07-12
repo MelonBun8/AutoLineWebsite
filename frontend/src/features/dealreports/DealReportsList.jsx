@@ -8,7 +8,6 @@ import useTitle from '../../hooks/useTitle'
 
 const DealReportsList = () => {
   useTitle("Deal Reports | Autoline")
-  // const [searchTerm, setSearchTerm] = useState('')
 
   const { username, isManager, isAdmin } = useAuth()
   
@@ -39,7 +38,7 @@ const DealReportsList = () => {
 
   if (isSuccess) {
     const { ids, entities } = dealReports
-    // dealReports is an object with an ids array and entities object. The entities object has keys of ids (same ids in ids array)
+    // dealReports is an object (orginally named data renamed during destructuring above returned by the useGetDealReportsQuery endpoint with an ids array and entities object. The entities object has keys of ids (same ids in ids array)
     // and values of objects with all properties within thus dealReports.entities[ids[0]].expenses has createdAt value
   
     let filteredIds

@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faRightFromBracket,
-    faFilePen,
     faUserGear,
     faUserPlus,
     faFileCirclePlus
@@ -18,6 +17,7 @@ import useAuth from '../hooks/useAuth'
 // setting up regex to compare to url and understand which path we are currently on to decide what to display
 const DASH_REGEX = /^\/dash(\/)?$/
 const DEALREPORTS_REGEX = /^\/dash\/deal-reports(\/)?$/
+const DELIVERYLETTER_REGEX = /^\/dash\/delivery-letters(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
 
 const DashHeader = () => {
@@ -32,6 +32,7 @@ const DashHeader = () => {
         // isSuccess, // not using isSuccess since routing to root page now handled within authApiSlice's logout mutation method 
         // (This was done because we were having issues with Api State being reset, and component would dismount before isSuccess could
         // successfully activate and run the isSuccess iseEffect, using a timeout is hacky and unreliable thus this was ultimately done.)
+        // IN SHORT! Navigation back to public front page is handled by mutation function in authApiSlice, not dependent on isSuccess here
         isError,
         error
     }] = useSendLogoutMutation()
@@ -47,16 +48,16 @@ const DashHeader = () => {
         sendLogout(navigate)
     }
 
+    const onNewDeliveryLetterClicked = () => navigate('./delivery-letters/new')
     const onNewDealReportClicked = () => navigate('./deal-reports/new')
-    const onNewUserClicked = () => navigate('./users/new')
-    const onDealReportsClicked = () => navigate('./deal-reports')
     const onUsersClicked = () => navigate('./users')
+    const onNewUserClicked = () => navigate('./users/new')
 
     let dashClass = null
-    if (!DASH_REGEX.test(pathname) && !DEALREPORTS_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) { // if we're not on any of the dash, notes list, or users list pages:
+    if (!DASH_REGEX.test(pathname) && !DEALREPORTS_REGEX.test(pathname) && !USERS_REGEX.test(pathname) && !DELIVERYLETTER_REGEX.test(pathname)) { // if we're not on any of the dash, notes list, or users list pages:
         dashClass = "dash-header__container--small"
     } // could do it with a ternary too 
-    
+
     let newDealReportButton = null
     if (DEALREPORTS_REGEX.test(pathname)) { // only display this on the deal reports page
         newDealReportButton = (
@@ -69,16 +70,16 @@ const DashHeader = () => {
             </button>
         )
     }
-
-    let newUserButton = null
-    if (USERS_REGEX.test(pathname)) { // only display this on the users page (which only admins / managers can reach, thus implicit layered auth)
-        newUserButton = (
-            <button
+    
+    let newDeliveryLetterButton = null 
+    if (DELIVERYLETTER_REGEX.test(pathname)) {
+        newDeliveryLetterButton = (
+            <button 
                 className="icon-button"
-                title = "New User"
-                onClick = {onNewUserClicked}
+                title = "New Delivery Letter"
+                onClick = {onNewDeliveryLetterClicked}
             >
-                <FontAwesomeIcon icon={faUserPlus} />
+                <FontAwesomeIcon icon={faFileCirclePlus} />
             </button>
         )
     }
@@ -98,15 +99,15 @@ const DashHeader = () => {
         }
     }
 
-    let dealReportsButton = null
-    if (!DEALREPORTS_REGEX.test(pathname) && pathname.includes('/dash')) {
-        dealReportsButton = (
+    let newUserButton = null
+    if (USERS_REGEX.test(pathname)) { // only display this on the users page (which only admins / managers can reach, thus implicit layered auth)
+        newUserButton = (
             <button
                 className="icon-button"
-                title="Deal Reports"
-                onClick={onDealReportsClicked}
+                title = "New User"
+                onClick = {onNewUserClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faUserPlus} />
             </button>
         )
     }
@@ -130,8 +131,8 @@ const DashHeader = () => {
         buttonContent = <>
             {newUserButton}
             {newDealReportButton}
+            {newDeliveryLetterButton}
             {userButton}
-            {dealReportsButton}
             {logoutButton}
         </>
     }

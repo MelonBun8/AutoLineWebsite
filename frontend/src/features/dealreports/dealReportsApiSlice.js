@@ -50,7 +50,7 @@ export const dealReportsApiSlice = apiSlice.injectEndpoints({  // RTK query will
             }),
 
             invalidatesTags: [
-                {type: "DealReport", id: "LIST"}
+                {type: "DealReport", id: "LIST"} 
             ]
         }),
 

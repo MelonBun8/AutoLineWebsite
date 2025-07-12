@@ -22,6 +22,10 @@ const Welcome = () => {
             
             <p><Link to="/dash/deal-reports">View Deal Reports</Link></p>
             <p><Link to="/dash/deal-reports/new">Add New Deal Report</Link></p>
+            <p><Link to="/dash/delivery-letters">View Delivery Letters</Link></p>
+            <p><Link to="/dash/delivery-letters/new">Add New Delivery Letter</Link></p>
+            
+            {/* <p><Link to="/dash/deal-reports/new">Add New Delivery Letter</Link></p> */}
 
             {(isManager || isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
             {/* Above is an example of SHORT CIRCUITING in JS, where && or || operators are used for a short conditional

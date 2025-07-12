@@ -1,6 +1,7 @@
 import { store } from '../../app/store' // importing redux store
 import { dealReportsApiSlice } from '../dealreports/dealReportsApiSlice'
 import { usersApiSlice } from '../users/usersApiSlice';
+import { deliveryLettersApiSlice } from '../deliveryletters/deliveryLettersApiSlice';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -13,7 +14,8 @@ const Prefetch = () => {
 
       store.dispatch(dealReportsApiSlice.util.prefetch('getDealReports', 'dealReportsList', {force:true}))
       store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', {force:true}))
-
+      store.dispatch(deliveryLettersApiSlice.util.prefetch('getDeliveryLetters', 'deliveryLettersList', {force:true}))
+      
     }, []); // No dependencies means the useEffect will only run when the component mounts
     
     return <Outlet /> // since we know outlet is wrapped around all child components / pages, we'll wrap this prefetch component around all protected pages

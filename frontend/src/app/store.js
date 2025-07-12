@@ -13,7 +13,7 @@ export const store = configureStore({
         auth: authReducer,
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware),
-    devTools: true
+    devTools: false // false for production, true for testing
 })
 
 setupListeners(store.dispatch) // This ensures at some regular intervals data is re-fetched to ensure data shown is not stale to anyone 

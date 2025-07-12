@@ -1,12 +1,9 @@
 const Joi = require('joi')
 
 const deliveryLetterSchema = Joi.object({
-    // 'user' field:
+    // 'user' field: USER ID of user
     // - Required for associating the delivery letter with a user.
-    // - Joi.string() for the ID, as it comes as a string from the client.
-    // - If you need to validate it as a MongoDB ObjectId, you might need joi-objectid or a custom validation.
-    //   For simplicity here, we'll assume it's just a required string.
-    user: Joi.string().required(),
+    user: Joi.string().hex().length(24).required(),
 
     // 'srNo' field:
     // - Optional as it's auto-incremented by mongoose-sequence plugin.
@@ -34,13 +31,13 @@ const deliveryLetterSchema = Joi.object({
         registrationBookNumber: Joi.string().optional().allow(''),
         salesCertificateNo: Joi.string().optional().allow(''),
         // 'salesCertificateDate': Optional date, ISO format.
-        salesCertificateDate: Joi.date().iso().optional(),
+        salesCertificateDate: Joi.date().iso().optional().allow(null),
         invoiceNo: Joi.string().optional().allow(''),
         // 'invoiceDate': Optional date, ISO format.
-        invoiceDate: Joi.date().iso().optional(),
+        invoiceDate: Joi.date().iso().optional().allow(null),
         cplcVerificationNo: Joi.string().optional().allow(''),
         // 'cplcDate': Optional date, ISO format.
-        cplcDate: Joi.date().iso().optional(),
+        cplcDate: Joi.date().iso().optional().allow(null),
     }).required(), // Ensures the entire 'carDetails' object is present and validated
 
     // 'delivereeDetails' object:

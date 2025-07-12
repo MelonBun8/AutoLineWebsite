@@ -2,9 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import { useGetDealReportsQuery } from './dealReportsApiSlice'
-import { memo } from 'react'
-
-import React from 'react'
+// import { memo } from 'react'
 
 const DealReport = ({ dealReportId }) => {
     
@@ -17,7 +15,6 @@ const DealReport = ({ dealReportId }) => {
     const navigate = useNavigate()
     
     if(dealReport){
-        console.log('Found deal report!')
         const created = new Date(dealReport.createdAt).toLocaleString('en-US', {day: 'numeric', month: 'long'})
         const updated = new Date(dealReport.updatedAt).toLocaleString('en-US', {day: 'numeric', month: 'long'})
         const serialNum =  dealReport?.serial_no
@@ -32,10 +29,10 @@ const DealReport = ({ dealReportId }) => {
                         : <span className="note__status--open">Open</span>
                     }
                 </td> */}
-                <td className="table__cell deal-report__serial-num">{serialNum}</td>
-                <td className="table__cell deal-report__created">{created}</td>
-                <td className="table__cell deal-report__updated">{updated}</td>                
-                <td className="table__cell deal-report__username">{dealReport.username}</td>
+                <td className="table__cell">{serialNum}</td>
+                <td className="table__cell">{created}</td>
+                <td className="table__cell">{updated}</td>                
+                <td className="table__cell">{dealReport.username}</td>
 
                 <td className="table__cell">
                     <button
@@ -56,6 +53,8 @@ const DealReport = ({ dealReportId }) => {
 
 }
 
-const memoizedDealReport = memo(DealReport) // Now the component on ly re-renders if there's changes in the data
+// const memoizedDealReport = memo(DealReport) // Now the component on ly re-renders if there's changes in the data
 
-export default memoizedDealReport
+// export default memoizedDealReport
+
+export default DealReport

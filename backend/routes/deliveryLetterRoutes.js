@@ -3,7 +3,7 @@ const router = express.Router()
 const deliveryLettersController = require('../controllers/deliveryLettersController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-// router.use(verifyJWT) // UNCOMMENT LATER!!! This is just for testing!!!
+router.use(verifyJWT) 
 
 // sub-routes of root/delivery-letters (Done different from users and dealReportRoutes cuz of lot more get requests)
 

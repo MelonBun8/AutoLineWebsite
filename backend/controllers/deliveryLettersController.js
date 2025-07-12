@@ -9,7 +9,8 @@ const asyncHandler = require('express-async-handler')
 const getDeliveryLettersBaseInfo = asyncHandler( async (req, res) => {
     const deliveryLetters = await DeliveryLetter.find().select("user srNo createdAt updatedAt").lean() // since no .save() nor getters/setters needed
     // timestamps (createdAt, updatedAt) and _id automatically included
-    if (!deliveryLetters?.length) return res.status(200).json({message: "No delivery letters found", data:[]})     
+    // if (!deliveryLetters?.length) return res.status(404).json({message: "No delivery letters found", data:[]})     
+    if (!deliveryLetters?.length) return res.status(404).json({message: "No delivery letters found"})     
 
     // if found, also add the username of user who created the deliveryLetter
     const lettersWithUser = await Promise.all( deliveryLetters.map( async (deliveryLetter) => {
@@ -74,13 +75,19 @@ const getFilteredDeliveryLetters = asyncHandler( async (req, res) => {
 // @desc create new delivery letter
 // @route POST /delivery-letters
 const createDeliveryLetter = asyncHandler( async (req, res) => {
+
+    const { username, ...data } = req.body;
     
+    const user = await User.findOne({ username }).lean().exec();
+    if (!user) {
+        return res.status(400).json({ message: 'User does not exist' });
+    }
+    // validating the fields using a Joi middleware validator
     // NOTE: you're destructuring what the .validate of Joi returns, you CAN'T call it anything but value, you can later rename it to something else but eh.. not gonna bother.
 
-    const deliveryLetter = req.body
-    // validating the fields using a Joi middleware validator
-    const { error, value: validatedLetter } = deliveryLetterSchema.validate(deliveryLetter, {abortEarly: false}); // to return ALL errors, not jsut first.
+    const { error, value: validatedLetter } = deliveryLetterSchema.validate({user:user._id.toString(), ...data}, {abortEarly: false}); // to return ALL errors, not jsut first.
     // Note, value holds the validated object if there's no errors found
+    // ALSO, mongoDB automatically typecasts our string back to objectId when saving
     
     if (error) {
         // With joi, each detail in errors will have error string message, path in JSON where error happend, validation type, more validation rule context. (we're taking only message and path)
@@ -88,16 +95,11 @@ const createDeliveryLetter = asyncHandler( async (req, res) => {
             field: detail.path.join('.'),
             message: detail.message.replace(/"/g, '') // use regex to remove all double quotes slashes for delimiting the ", and g for global/ all instances, not just the first.
         })) // NOTE that the arrow function allows you to omit and have implicit returns, and since we have an object literal, we must wrap it in () to prevent misinterpretation as a block scope
-
+        console.log(errors)
         return res.status(400).json({
             message: 'Validation failed for create',
             errors: errors
         })
-    }
-    const userExists = await User.findById(validatedLetter.user).lean().exec()
-    
-    if(!userExists){// not a valid user
-        return(res.status(400).json({message: 'User does not exist'}))
     }
 
     const newDeliveryLetter = await DeliveryLetter.create(validatedLetter)
@@ -105,7 +107,7 @@ const createDeliveryLetter = asyncHandler( async (req, res) => {
     if(newDeliveryLetter){
         res.status(201).json({ message: "New delivery letter created", newDeliveryLetter })
     } else {
-        res.status(500).json({ message: "Failed to create deal report" });
+        res.status(500).json({ message: "Failed to create delivery letter" });
     }
 
 })
@@ -116,14 +118,20 @@ const updateDeliveryLetter = asyncHandler( async (req, res) => {
     
     const  id = req.params.id
     const deliveryLetter = req.body
+    console.log(deliveryLetter)
     
     const deliveryLetterExists = await DeliveryLetter.findById(id).lean().exec()
     if(!deliveryLetterExists){
         return(res.status(404).json({message: 'Bad Request. Delivery Letter does not exist'}))
     }
 
+    deliveryLetter.user = deliveryLetterExists.user.toString()
+
     const { error, value: validatedLetter } = deliveryLetterSchema.validate(deliveryLetter, {abortEarly: false}); 
     if (error) {
+        console.log("Some error found with the frontend data!")
+        console.log(error)
+        
         const errors = error.details.map(detail => ({
             field: detail.path.join('.'),
             message: detail.message.replace(/"/g, '') 
@@ -133,7 +141,6 @@ const updateDeliveryLetter = asyncHandler( async (req, res) => {
             errors: errors
         })
     }
-
     const updatedDeliveryLetter = await DeliveryLetter.findByIdAndUpdate(id, validatedLetter, {new:true, runValidators:true}).lean().exec()
 
     if(updatedDeliveryLetter){

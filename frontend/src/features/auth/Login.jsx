@@ -11,6 +11,8 @@ import useTitle from '../../hooks/useTitle'
 
 import usePersist from '../../hooks/usePersist'
 
+import { toast } from 'react-toastify'
+
 const Login = () => {
 
   useTitle('Login | Autoline')
@@ -44,6 +46,7 @@ const Login = () => {
         dispatch(setCredentials({ accessToken }))
         setUsername('')
         setPassword('')
+        toast.success(`Welcome ${username}!`)
         navigate('/dash')
     } catch (err) {
         if (!err.status) {

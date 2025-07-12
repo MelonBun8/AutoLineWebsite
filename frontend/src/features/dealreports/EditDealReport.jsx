@@ -1,5 +1,4 @@
-import { useParams } from 'react-router-dom' // to get note ID from URL
-// import { selectAllUsers } from '../users/usersApiSlice'
+import { useParams } from 'react-router-dom' // to get deal report ID from URL
 import EditDealReportForm from './EditDealReportForm'
 // Below imports added during refactor for extra security
 import { useGetDealReportsQuery } from './dealReportsApiSlice'
