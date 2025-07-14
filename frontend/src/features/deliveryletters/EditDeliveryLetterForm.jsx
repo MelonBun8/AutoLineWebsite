@@ -4,8 +4,9 @@ import { toast } from 'react-toastify'
 import { useUpdateDeliveryLetterMutation, useDeleteDeliveryLetterMutation } from './deliveryLettersApiSlice'
 import MultiStepFormNavigator from '../../components/MultiStepFormNavigator/MultiStepFormNavigator'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faSave, faTrashCan, faFilePdf } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
+import useExportDeliveryLetter from '../../hooks/useExportDeliveryLetter'
 import { useNavigate } from "react-router-dom"
 import CarDetailsForm from "./FormSteps/CarDetailsForm"
 import DelivereeDetailsForm from "./formSteps/DelivereeDetailsForm"
@@ -16,6 +17,7 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const { isManager, isAdmin } = useAuth()
   const navigate = useNavigate()
+  const exportDeliveryLetter = useExportDeliveryLetter()
 
   const methods = useForm({
     defaultValues: {
@@ -147,17 +149,27 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
       {/* Header with delete button */}
       <div className="form-header">
         <h2 className="form-title">Edit Delivery Letter</h2>
-        {canDelete && (
+         <div className="form-header-buttons">
           <button
             className="icon-button"
-            title="Delete Delivery Letter"
-            onClick={confirmDelete}
-            disabled={isDeleteLoading}
+            title="Export as PDF"
+            onClick={() => exportDeliveryLetter(deliveryLetter)}
           >
-            <FontAwesomeIcon icon={faTrashCan} />
-            {isDeleteLoading && <span className="loading-text">Deleting...</span>}
+            <FontAwesomeIcon icon={faFilePdf} />
           </button>
-        )}
+
+          {canDelete && (
+            <button
+              className="icon-button"
+              title="Delete Delivery Letter"
+              onClick={confirmDelete}
+              disabled={isDeleteLoading}
+            >
+              <FontAwesomeIcon icon={faTrashCan} />
+              {isDeleteLoading && <span className="loading-text">Deleting...</span>}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Delete Confirmation Modal */}

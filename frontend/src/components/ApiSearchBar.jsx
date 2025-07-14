@@ -8,7 +8,6 @@ const ApiSearchBar = ({
   onFilterReset,
   isSearchActive
 }) => {
-
   const [localInput, setLocalInput] = useState('')
   
   const handleInputChange = (e) => setLocalInput(e.target.value)
@@ -17,7 +16,6 @@ const ApiSearchBar = ({
     const newChoice = e.target.value
     setFilterChoice(newChoice)
     
-    // If user selects '-', reset the search
     if (newChoice === '-' && onFilterReset) {
       onFilterReset()
       setLocalInput('')
@@ -46,45 +44,37 @@ const ApiSearchBar = ({
     }
   }
 
-  const choices = filterOptions.map(choice => {
-    return <option key={choice} value={choice}>{choice}</option>
-  })
+  const choices = filterOptions.map(choice => (
+    <option key={choice} value={choice}>{choice}</option>
+  ))
 
   return (
-    <div className="search-bar-container">
-      <div className="search-bar">
-        <label htmlFor="searchTerm"/>
+    <div className="api-search-bar-container">
+      <div className="api-search-bar">
         <input
-          id="searchTerm"
           type="text"
           placeholder="Type and press Enter to search..."
           value={localInput}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        
-        <label htmlFor='searchFilter'/>
+
         <select
-          id='searchFilter'
-          name='searchFilter'
           value={filterChoice}
           onChange={handleFilterChoiceChange}
         >
           {choices}
         </select>
 
-        {/* Search button */}
         <button 
           type="button" 
           onClick={handleSearch}
-          className="search-submit-btn"
           disabled={filterChoice === '-' || localInput.trim() === ''}
           title="Search"
         >
           Search
         </button>
 
-        {/* Reset button - only show when search is active */}
         {isSearchActive && (
           <button 
             type="button" 
@@ -96,14 +86,13 @@ const ApiSearchBar = ({
           </button>
         )}
       </div>
-      
-      {/* Search instructions */}
+
       <div className="search-instructions">
         <small>
           {filterChoice === '-' 
             ? "Select a filter and type your search term, then press Enter or click Search" 
             : isSearchActive 
-              ? `Searching by ${filterChoice}. Click Clear to see all delivery letters.`
+              ? `Searching by ${filterChoice}. Click Clear to see all delivery letters.` 
               : "Type your search term and press Enter or click Search"
           }
         </small>

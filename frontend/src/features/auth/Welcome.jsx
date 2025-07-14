@@ -2,41 +2,41 @@ import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
 
+import logo from '../../assets/logo.png'
+
 const Welcome = () => {
+  useTitle('Dash | Autoline')
+  const { username, isManager, isAdmin } = useAuth()
 
-    useTitle('Dash | Autoline')
+  const date = new Date()
+  const today = new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+  }).format(date)
 
-    const { username, isManager, isAdmin } = useAuth()
-    const date = new Date()
-    const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
-
-    const content = (
-
-        <section className="welcome">
-
-            <p>{today}</p>
-
-            <h1>Welcome {username}!</h1>
-
-            {/* Remember, we only want Managers and Admins to view new user settings and add new users */}
-            
-            <p><Link to="/dash/deal-reports">View Deal Reports</Link></p>
-            <p><Link to="/dash/deal-reports/new">Add New Deal Report</Link></p>
-            <p><Link to="/dash/delivery-letters">View Delivery Letters</Link></p>
-            <p><Link to="/dash/delivery-letters/new">Add New Delivery Letter</Link></p>
-            
-            {/* <p><Link to="/dash/deal-reports/new">Add New Delivery Letter</Link></p> */}
-
-            {(isManager || isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}
-            {/* Above is an example of SHORT CIRCUITING in JS, where && or || operators are used for a short conditional
-            X && Y will return X if X is 'falsy' and Y if X is 'truthy' (for multiple truthy-s, last truthy returned)
-            X || Y is opposite to && in the sense it returns the first truthy or last falsy if all are falsy */}
-            {(isManager || isAdmin) &&<p><Link to="/dash/users/new">Add New User</Link></p>}
-
-        </section>
-    )
-
-    return content
+  return (
+    <section className="welcome-hero">
+      <div className="welcome-hero__text">
+        <p className="welcome-hero__date">{today}</p>
+        <h1 className="welcome-hero__title">Welcome, {username}!</h1>
+        <div className="welcome-hero__actions">
+          <Link to="/dash/deal-reports" className="hero-button">📋 View Deal Reports</Link>
+          <Link to="/dash/deal-reports/new" className="hero-button">➕ New Deal Report</Link>
+          <Link to="/dash/delivery-letters" className="hero-button">✉️ View Delivery Letters</Link>
+          <Link to="/dash/delivery-letters/new" className="hero-button">➕ New Delivery Letter</Link>
+          {(isManager || isAdmin) && (
+            <>
+              <Link to="/dash/users" className="hero-button">👤 View User Settings</Link>
+              <Link to="/dash/users/new" className="hero-button">➕ Add New User</Link>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="welcome-hero__image">
+        <img src={logo} alt="Autoline Logo" />
+      </div>
+    </section>
+  )
 }
 
 export default Welcome

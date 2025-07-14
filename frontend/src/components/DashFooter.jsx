@@ -32,8 +32,8 @@ const DashFooter = () => {
     const content = (
         <footer className = "dash-footer">
             {goHomeButton} 
-            <p>Current User: {username}</p>
-            <p>Status: {status}</p>
+            <p><strong>User:</strong> {username}</p>
+            <p><strong>Status:</strong> <span className={`status-badge ${status}`}>{status}</span></p>
         </footer>
     )
 
