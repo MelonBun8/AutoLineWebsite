@@ -8,7 +8,7 @@ import { faSave, faTrashCan, faFilePdf } from "@fortawesome/free-solid-svg-icons
 import useAuth from "../../hooks/useAuth"
 import useExportDeliveryLetter from '../../hooks/useExportDeliveryLetter'
 import { useNavigate } from "react-router-dom"
-import CarDetailsForm from "./FormSteps/CarDetailsForm"
+import CarDetailsForm from "./formSteps/CarDetailsForm"
 import DelivereeDetailsForm from "./formSteps/DelivereeDetailsForm"
 import DealershipDetailsForm from "./formSteps/DealershipDetailsForm"
 
