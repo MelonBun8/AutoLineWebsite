@@ -3,7 +3,7 @@ import { setCredentials } from '../../features/auth/authSlice'
 
 const baseQuery = fetchBaseQuery({ // applies to every request we send on the baseURL, attaching an authorization header
     // with the access token
-    baseUrl: 'http://localhost:3500', // or your actual API URL (for production, changed to )
+    baseUrl: 'https://autoline-backend.onrender.com', // or your actual API URL (for production, changed to )
     credentials: 'include', // This ensures cookies are sent with every request
     prepareHeaders: (headers, { getState }) => { // specific fetchBaseQuery function that requires headers and an api object (we're destructuring getState from the api object ) 
         const token = getState().auth.token
