@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: none;
 }
 
 /* || VARIABLES */
@@ -34,115 +35,6 @@
   --SHADOW-LG: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --GRADIENT-PRIMARY: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --GRADIENT-SUBTLE: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
-/* || HERO */
-.welcome-hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: var(--SHADOW-MD);
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.welcome-hero__text {
-  flex: 1;
-  min-width: 250px;
-}
-
-.welcome-hero__date {
-  color: var(--COLOR-MUTED);
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-
-.welcome-hero__title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: var(--COLOR);
-}
-
-.welcome-hero__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.hero-button {
-  padding: 0.75rem 1rem;
-  background: var(--SECONDARY-BG);
-  border: 1px solid var(--BORDER-COLOR);
-  border-radius: 0.75rem;
-  color: var(--COLOR);
-  text-align: left;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  box-shadow: var(--SHADOW-SM);
-}
-
-.hero-button:hover {
-  background: var(--LINK-COLOR);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: var(--SHADOW-MD);
-}
-
-.welcome-hero__image {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  justify-content: center;
-}
-
-.welcome-hero__image img {
-  max-width: 250px;
-  width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  box-shadow: var(--SHADOW-LG);
-}
-
-.public-hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: var(--SHADOW-MD);
-  gap: 2rem;
-  margin: 2rem;
-}
-.public-hero__content {
-  flex: 1;
-  min-width: 250px;
-}
-.public-hero__title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.public-hero__desc,
-.public-hero__owner {
-  margin-bottom: 1rem;
-  color: var(--COLOR-MUTED);
-}
-.public-hero__addr {
-  font-style: normal;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-.public-hero__image img {
-  max-width: 250px;
-  width: 100%;
-  border-radius: 1rem;
-  box-shadow: var(--SHADOW-MD);
 }
 
 /* || UTILITY CLASSES */
@@ -212,7 +104,7 @@
 /* || GENERAL STYLES */
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   background: var(--BGCOLOR);
   color: var(--COLOR);
@@ -278,6 +170,31 @@ a:focus-visible {
   border: 1px solid var(--BORDER-LIGHT);
 }
 
+.login {
+  border: solid red;
+  align-items: center;
+  justify-content:center;
+}
+
+.login__form {
+    max-width: 400px; /* A more appropriate width for a login form */
+    margin: auto; /* Center the form if its parent isn't using flex centering */
+    padding: 2.5rem; /* More generous padding */
+    border-radius: 1rem; /* Slightly softer corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login__form:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login__form label {
+    font-weight: 600; /* Bolder labels */
+    color: var(--COLOR);
+    margin-bottom: 0.25rem; /* Space between label and input */
+}
 .public__addr {
   margin-top: 1.5rem;
   color: var(--COLOR-SECONDARY);
@@ -286,6 +203,344 @@ a:focus-visible {
 .welcome a::before {
   content: "→ ";
   color: var(--LINK-COLOR);
+}
+/* || HERO */
+
+.welcome-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff); /* Light blue gradient */
+  padding: 2.5rem; /* Increased padding for more breathing room */
+  border-radius: 1.5rem;
+  box-shadow: var(--SHADOW-MD);
+  gap: 2.5rem; /* Increased gap */
+  margin-top: 2rem;
+  transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
+  position: relative; /* For potential future additions like subtle animations */
+  overflow: hidden; /* Ensures no content spills out of border-radius */
+}
+
+/* Subtle background pattern/texture */
+.welcome-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239ECFFF' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 0h3v3H0V0zm3 3h3v3H3V3z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.welcome-hero__text {
+  flex: 1;
+  min-width: 300px; /* Slightly increased min-width */
+  z-index: 1; /* Ensure text is above background pattern */
+}
+
+.welcome-hero__date {
+  color: var(--COLOR-MUTED);
+  font-size: 0.9rem; /* Slightly larger font size */
+  margin-bottom: 0.6rem; /* Adjusted margin */
+  letter-spacing: 0.05em; /* A bit of letter spacing */
+}
+
+.welcome-hero__title {
+  font-size: 2.5rem; /* Larger title for more impact */
+  font-weight: 800; /* Bolder font weight */
+  margin-bottom: 2rem; /* More space below title */
+  color: var(--COLOR);
+  line-height: 1.2; /* Improved readability */
+}
+
+.welcome-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem; /* Slightly larger gap between buttons */
+}
+
+.hero-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between icon and text */
+  padding: 0.8rem 1.5rem; /* More vertical padding for a taller button */
+  background-color: var(--COLOR-PRIMARY); /* Example primary button color */
+  color: #ffffff;
+  border-radius: 0.75rem; /* Softer border-radius */
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: var(--SHADOW-MD);
+}
+
+.hero-button:hover {
+  background-color: var(--COLOR-PRIMARY-HOVER); /* Darker on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.hero-button:active {
+  transform: translateY(0);
+  box-shadow: var(--SHADOW-MD);
+}
+
+.welcome-hero__image {
+  flex: 1;
+  min-width: 250px; /* Slightly increased min-width */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center image vertically if space allows */
+  z-index: 1;
+}
+
+.welcome-hero__image img {
+  max-width: 300px; /* Increased max-width for the image */
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: var(--SHADOW-LG);
+  object-fit: contain; /* Ensures the image scales down properly without cropping */
+  transition: transform 0.3s ease-in-out;
+}
+
+.welcome-hero__image img:hover {
+  transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+/* --- Media Queries --- */
+
+/* For smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .welcome-hero {
+    flex-direction: column; /* Stack elements vertically */
+    text-align: center; /* Center-align text */
+    padding: 1.5rem; /* Reduce padding */
+    gap: 1.5rem; /* Reduce gap */
+  }
+
+  .welcome-hero__text {
+    min-width: unset; /* Remove min-width constraint */
+  }
+
+  .welcome-hero__title {
+    font-size: 2rem; /* Adjust title size for mobile */
+    margin-bottom: 1.2rem;
+  }
+
+  .welcome-hero__actions {
+    flex-direction: column; /* Ensure buttons remain stacked */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .hero-button {
+    width: 100%; /* Full width buttons on small screens */
+    justify-content: center; /* Center button content */
+  }
+
+  .welcome-hero__image {
+    min-width: unset; /* Remove min-width constraint */
+    order: -1; /* Place image above text on small screens */
+    margin-bottom: 1rem; /* Add some space below the image */
+  }
+
+  .welcome-hero__image img {
+    max-width: 200px; /* Reduce max-width for image on small screens */
+  }
+}
+
+/* For medium screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .welcome-hero {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .welcome-hero__title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-hero__image img {
+    max-width: 280px;
+  }
+
+  .welcome-hero__actions {
+    flex-direction: row; /* Arrange buttons in a row for more horizontal space */
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 1rem; /* Adjust gap for row layout */
+  }
+
+  .hero-button {
+    flex-grow: 1; /* Allow buttons to grow and take available space */
+    max-width: calc(50% - 0.5rem); /* Two buttons per row, with a small gap */
+  }
+}
+
+/* For large screens (desktops and above) */
+@media (min-width: 1025px) {
+  .welcome-hero {
+    padding: 3rem; /* Even more padding for larger screens */
+    gap: 3rem; /* More gap */
+  }
+
+  .welcome-hero__title {
+    font-size: 3rem; /* Larger title on big screens */
+  }
+
+  .welcome-hero__actions {
+    flex-direction: row; /* Keep buttons in a row */
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-button {
+    flex-grow: 0; /* Don't force buttons to grow */
+    width: auto; /* Let content dictate width */
+    min-width: 200px; /* Ensure a minimum width for buttons */
+  }
+
+  .welcome-hero__image img {
+    max-width: 350px; /* Max width for image on large screens */
+  }
+}
+
+/* --- Base Styles for .public-hero (Mobile-First) --- */
+.public-hero {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
+  gap: 2.5rem; 
+
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--SHADOW-MD);
+
+  margin: 2rem auto; 
+  width: 90%; 
+  max-width: 1400px; 
+  box-sizing: border-box; 
+
+  min-height: 90vh;
+
+}
+
+/* --- Styles for .public-hero__image --- */
+.public-hero__image {
+  width: 100%; 
+  max-width: 400px; 
+}
+
+.public-hero__image img {
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-radius: 1rem;
+  box-shadow: var(--SHADOW-MD);
+}
+
+
+.public-hero__content {
+  text-align: center; 
+  width: 100%; 
+  max-width: 600px; 
+}
+
+.public-hero__title {
+  font-size: clamp(2rem, 6vw, 3.5rem); 
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.public-hero__desc,
+.public-hero__owner,
+.public-hero__addr {
+  margin-bottom: 1rem;
+  color: var(--COLOR-MUTED);
+  line-height: 1.6;
+}
+
+.public-hero__addr {
+  font-style: normal; 
+}
+.hero-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    color: white; 
+    background-color: #007bff; 
+    text-decoration: none;
+    border-radius: 0.5rem; 
+    font-weight: 600;
+    transition: all 0.3s ease; 
+    margin-top: 1.5rem;
+    box-shadow: var(--SHADOW-SM); 
+}
+a.hero-button,
+a.hero-button:visited,
+a.hero-button:hover,
+a.hero-button:focus-visible {
+    color: white; 
+    text-decoration: none; 
+}
+.hero-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
+    box-shadow: var(--SHADOW-MD); /* Enhanced shadow on hover */
+}
+.nowrap {
+    white-space: nowrap; /* Prevents "Autoline Showroom" from breaking */
+}
+
+/* Small to Medium Tablets (e.g., landscape phones, small tablets) */
+@media (min-width: 768px) {
+  .public-hero {
+    flex-direction: row-reverse; 
+    justify-content: center; 
+    text-align: left; 
+    gap: 3rem; 
+  }
+
+  .public-hero__image,
+  .public-hero__content {
+    width: auto; 
+    max-width: none; 
+  }
+
+  .public-hero__image {
+    flex: 1 1 400px; 
+    min-width: 300px; 
+  }
+
+  .public-hero__content {
+    flex: 1 1 500px; 
+    min-width: 350px; 
+    text-align: left; 
+  }
+
+  .public-hero__title {
+    font-size: clamp(2.5rem, 4vw, 4rem); 
+  }
+}
+
+/* Larger Desktops */
+@media (min-width: 1024px) {
+  .public-hero {
+    padding: 3rem 4rem; 
+    gap: 4rem; 
+  }
+
+  .public-hero__image {
+    flex-basis: 500px; 
+  }
+
+  .public-hero__content {
+    flex-basis: 600px; 
+  }
 }
 
 /* || DASH HEADER, CONTAINER & FOOTER */

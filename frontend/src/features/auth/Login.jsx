@@ -82,7 +82,7 @@ const Login = () => {
                 {/* The aria-live = assertive means when it gets focused on, it will read out the error message */}
                 <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form login__form" onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
                     <input
                         className="form__input"
