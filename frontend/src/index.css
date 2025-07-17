@@ -171,7 +171,6 @@ a:focus-visible {
 }
 
 .login {
-  border: solid red;
   align-items: center;
   justify-content:center;
 }
