@@ -5,46 +5,19 @@ const DealershipDetailsForm = () => {
 
   return (
     <div className="form-space-y">
-      <h3 className="form-title">Dealership Information</h3>
-      
-      <fieldset className="fieldset">
-        <legend className="fieldset-legend">For Dealer</legend>
-        <div className="form-grid-three">
-          <div className="form-field">
-            <label className="label">Owner Name</label>
-            <input
-              type="text"
-              {...register("carDealership.forDealer.ownerName")}
-              className="input"
-            />
-          </div>
-          <div className="form-field">
-            <label className="label">Salesman Name</label>
-            <input
-              type="text"
-              {...register("carDealership.forDealer.salesmanName")}
-              className="input"
-            />
-          </div>
-          <div className="form-field">
-            <label className="label">Salesman Card No</label>
-            <input
-              type="text"
-              {...register("carDealership.forDealer.salesmanCardNo")}
-              className="input"
-            />
-          </div>
-        </div>
-      </fieldset>
+      <h3 className="form-title">Transaction Information</h3>
 
       <fieldset className="fieldset">
         <legend className="fieldset-legend">Seller Information</legend>
         <div className="form-grid">
+
           <div className="form-field">
-            <label className="label">Name</label>
+            <label className="label label-required">Name</label>
             <input
               type="text"
-              {...register("carDealership.seller.name")}
+              {...register("carDealership.seller.name", {
+                  required: "Seller name is required",
+              })}
               className="input"
             />
           </div>
@@ -57,10 +30,12 @@ const DealershipDetailsForm = () => {
             />
           </div>
           <div className="form-field">
-            <label className="label">Telephone</label>
+            <label className="label label-required">Telephone</label>
             <input
               type="tel"
-              {...register("carDealership.seller.tel")}
+              {...register("carDealership.seller.tel", {
+                  required: "Seller phone number is required",
+              })}
               className="input"
             />
           </div>
@@ -86,10 +61,12 @@ const DealershipDetailsForm = () => {
         <legend className="fieldset-legend">Purchaser Information</legend>
         <div className="form-grid">
           <div className="form-field">
-            <label className="label">Name</label>
+            <label className="label label-required">Name</label>
             <input
               type="text"
-              {...register("carDealership.purchaser.name")}
+              {...register("carDealership.purchaser.name", {
+                  required: "Purchaser name is required",
+              })}
               className="input"
             />
           </div>
@@ -102,10 +79,12 @@ const DealershipDetailsForm = () => {
             />
           </div>
           <div className="form-field">
-            <label className="label">Telephone</label>
+            <label className="label label-required">Telephone</label>
             <input
               type="tel"
-              {...register("carDealership.purchaser.tel")}
+              {...register("carDealership.purchaser.tel", {
+                  required: "Purchaser phone number is required",
+              })}
               className="input"
             />
           </div>

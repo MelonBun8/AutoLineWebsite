@@ -8,63 +8,66 @@ const deliveryLetterSchema = new mongoose.Schema({
         ref: 'User'
     },
     srNo: Number,
-    membershipNo: String,
+    received: {
+        type: Boolean,
+        required: true
+    },
+    deliveryLetterDate: {
+        type: Date,
+        required: true,
+    },
+    // membershipNo: String,
     carDetails: {
-        registrationNo:{
+        chassisNo: {
             type: String,
             required: true
         },
-        registrationDate:{
-            type: Date,
-            required: true
-        },
-        chassisNo: String,
+        registrationNo: String,
+        registrationDate: Date,
         engineNo: String,
         make: String,
         model: String,
         color: String,
         hp: String,
         registrationBookNumber: String,
-        salesCertificateNo: String,
-        salesCertificateDate: Date,
         invoiceNo: String,
         invoiceDate: Date,
-        cplcVerificationNo: String,
-        cplcDate: Date
     },
-    delivereeDetails: {
-        registeredName: {
-            type: String,
-            required: true
-        },
-        address: String,
-        cnic: {
-            type: String,
-            required: true
-        },
-        receiverName: { 
-            type: String,
-            required: true
-        },
-        documentDetails: String
-    },
+    // delivereeDetails: {
+    //     registeredName: String,
+    //     address: String,
+    //     cnic: String,
+    // },
     carDealership: {
-        forDealer: {
-            ownerName: String,
-            salesmanName: String,
-            salesmanCardNo: String,
-        },
+        // forDealer: {
+        //     ownerName: String,
+        //     salesmanName: String,
+        //     salesmanCardNo: String,
+        // },
         seller: {
-            name: String,
+            name: {
+                type: String,
+                required: true
+            },
             address: String,
-            tel: String,
+            tel: {
+                type: String,
+                required: true
+            },
             nic: String,
             remarks: String
         },
         purchaser: {
-            name: String,
+            name: {
+                type: String,
+                required: true
+            },
             address: String,
-            tel: String,
+            tel: {
+                type: String,
+                required: true
+            },
+            address: String,
             nic: String
         }
     } 

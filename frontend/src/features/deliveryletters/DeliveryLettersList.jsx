@@ -15,14 +15,15 @@ const DeliveryLettersList = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isSearchActive, setIsSearchActive] = useState(false)
 
-  const choices = ['-', 'Serial No.', 'Reg No.', 'Reg Name', 'Reciever Name']
+  const choices = ['-', 'Serial No.', 'Reg No.', 'Chassis No.', 'Seller', 'Purchaser']
 
   // Map display choices to API field names
   const filterKeyMap = {
     'Serial No.': 'srNo',
     'Reg No.': 'carDetails.registrationNo',
-    'Reg Name': 'delivereeDetails.registeredName',
-    'Reciever Name': 'delivereeDetails.receiverName'
+    'Chassis No.': 'carDetails.chassisNo',
+    'Seller': 'carDealership.seller.name',
+    'Purchaser': 'carDealership.purchaser.name',
   }
 
   // Default query for all delivery letters
@@ -33,7 +34,7 @@ const DeliveryLettersList = () => {
     isError: isErrorAll,
     error: errorAll
   } = useGetDeliveryLettersQuery('deliveryLettersList', {
-    pollingInterval: 600000,
+    pollingInterval: 120000,
     refetchOnFocus: false,
     refetchOnMountOrArgChange: false,
     skip: isSearchActive // Skip this query when search is active

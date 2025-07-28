@@ -29,16 +29,16 @@ const NewDealReportForm = () => {
             user: username,
             date: new Date(), // This will create a new Date object only when `username` changes
             purchasedFrom: '',
-            make: '',
-            color: '',
+            make: 'None',
+            color: 'None',
             chassisNumber: '',
             regionNumber: '0',
             purchasePrice: '',
             voucherNumber: '0',
             soldTo: '',
             salePrice: '',
-            commissionAmount: '',
-            expenses: '',
+            commissionAmount: '0',
+            expenses: '0',
         };
     }, [username]);
 
@@ -148,9 +148,9 @@ const NewDealReportForm = () => {
       }
     }
 
-    const renderInput = (label, name, type = "text", note = "") => (
+    const renderInput = (label, name, type = "text", note = "", req=false) => (
       <>
-        <label className = "form__label" htmlFor = {name}>
+        <label className = { req === true ? "label label-required" : "label"} htmlFor = {name}>
           {label} {note && <span className = "nowrap">[{note}]</span>}
         </label>
         <input 
@@ -185,15 +185,15 @@ const NewDealReportForm = () => {
 
         <div className="form__row">
           <div className="form__divider">
-            {renderInput("Purchased From", "purchasedFrom", "text", "Alphabetical")}
-            {renderInput("Purchase Price", "purchasePrice", "number", "Numeric")}
+            {renderInput("Purchased From", "purchasedFrom", "text", "Alphabetical", true)}
+            {renderInput("Purchase Price", "purchasePrice", "number", "Numeric", true)}
             {renderInput("Voucher Number", "voucherNumber", "text", "Alphanumeric")}
             {renderInput("Commission Amount", "commissionAmount", "number", "Numeric")}
           </div>
 
           <div className="form__divider">
-            {renderInput("Sold To", "soldTo", "text", "Alphabetical")}
-            {renderInput("Sale Price", "salePrice", "number", "Numeric")}
+            {renderInput("Sold To", "soldTo", "text", "Alphabetical", true)}
+            {renderInput("Sale Price", "salePrice", "number", "Numeric", true)}
             {renderInput("Expenses", "expenses", "number", "Numeric")}
           </div>
         </div>
@@ -206,7 +206,7 @@ const NewDealReportForm = () => {
               {renderInput("Color", "color", "text", "Alphabetical")}
             </div>
             <div className="form__divider">
-              {renderInput("Chassis Number", "chassisNumber", "text", "Alphanumeric")}
+              {renderInput("Chassis Number", "chassisNumber", "text", "Alphanumeric", true)}
               {renderInput("Region Number", "regionNumber", "text", "Alphanumeric")}
             </div>
           </div>

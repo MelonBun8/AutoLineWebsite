@@ -9,7 +9,6 @@ import useAuth from "../../hooks/useAuth"
 import useExportDeliveryLetter from '../../hooks/useExportDeliveryLetter'
 import { useNavigate } from "react-router-dom"
 import CarDetailsForm from "./formSteps/CarDetailsForm"
-import DelivereeDetailsForm from "./formSteps/DelivereeDetailsForm"
 import DealershipDetailsForm from "./formSteps/DealershipDetailsForm"
 
 const EditDeliveryLetterForm = ({ deliveryLetter }) => {
@@ -21,7 +20,8 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
 
   const methods = useForm({
     defaultValues: {
-      membershipNo: deliveryLetter?.membershipNo || "",
+      deliveryLetterDate: deliveryLetter?.deliveryLetterDate?.slice(0, 10) || null,
+      received: deliveryLetter?.received || false,
       carDetails: {
         registrationNo: deliveryLetter?.carDetails?.registrationNo || "",
         registrationDate: deliveryLetter?.carDetails?.registrationDate?.slice(0, 10) || null,
@@ -32,26 +32,10 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
         color: deliveryLetter?.carDetails?.color || "",
         hp: deliveryLetter?.carDetails?.hp || "",
         registrationBookNumber: deliveryLetter?.carDetails?.registrationBookNumber || "",
-        salesCertificateNo: deliveryLetter?.carDetails?.salesCertificateNo || "",
-        salesCertificateDate: deliveryLetter?.carDetails?.salesCertificateDate?.slice(0, 10) || null,
         invoiceNo: deliveryLetter?.carDetails?.invoiceNo || "",
         invoiceDate: deliveryLetter?.carDetails?.invoiceDate?.slice(0, 10) || null,
-        cplcVerificationNo: deliveryLetter?.carDetails?.cplcVerificationNo || "",
-        cplcDate: deliveryLetter?.carDetails?.cplcDate?.slice(0, 10) || null,
-      },
-      delivereeDetails: {
-        registeredName: deliveryLetter?.delivereeDetails?.registeredName || "",
-        address: deliveryLetter?.delivereeDetails?.address || "",
-        cnic: deliveryLetter?.delivereeDetails?.cnic || "",
-        receiverName: deliveryLetter?.delivereeDetails?.receiverName || "",
-        documentDetails: deliveryLetter?.delivereeDetails?.documentDetails || "",
       },
       carDealership: {
-        forDealer: {
-          ownerName: deliveryLetter?.carDealership?.forDealer?.ownerName || "",
-          salesmanName: deliveryLetter?.carDealership?.forDealer?.salesmanName || "",
-          salesmanCardNo: deliveryLetter?.carDealership?.forDealer?.salesmanCardNo || "",
-        },
         seller: {
           name: deliveryLetter?.carDealership?.seller?.name || "",
           address: deliveryLetter?.carDealership?.seller?.address || "",
@@ -81,10 +65,11 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
   const isFormValid = () => {
     const requiredFields = [
       'carDetails.registrationNo',
-      'carDetails.registrationDate',
-      'delivereeDetails.registeredName',
-      'delivereeDetails.cnic',
-      'delivereeDetails.receiverName'
+      'carDealership.seller.name',
+      'carDealership.seller.tel',
+      'carDealership.purchaser.tel',
+      'carDealership.purchaser.name',
+      'carDetails.chassisNo',
     ]
     
     return requiredFields.every(field => {
@@ -130,7 +115,6 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
 
   const formSteps = [
     { component: <CarDetailsForm />, title: "Car Details" },
-    { component: <DelivereeDetailsForm />, title: "Deliveree Details" },
     { component: <DealershipDetailsForm />, title: "Dealership Details" }
   ]
 

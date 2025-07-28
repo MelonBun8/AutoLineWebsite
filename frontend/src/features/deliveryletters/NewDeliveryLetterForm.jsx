@@ -8,7 +8,6 @@ import { faSave } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import CarDetailsForm from "./formSteps/CarDetailsForm"
-import DelivereeDetailsForm from "./formSteps/DelivereeDetailsForm"
 import DealershipDetailsForm from "./formSteps/DealershipDetailsForm"
 
 const NewDeliveryLetterForm = () => {
@@ -18,7 +17,9 @@ const NewDeliveryLetterForm = () => {
 
   const methods = useForm({
     defaultValues: {
-      membershipNo: "",
+      deliveryLetterDate:null,
+      deliveryLetterTime:null,
+      received: false,
       carDetails: {
         registrationNo:"",
         registrationDate:null,
@@ -29,26 +30,10 @@ const NewDeliveryLetterForm = () => {
         color:  "",
         hp: "",
         registrationBookNumber: "",
-        salesCertificateNo:  "",
-        salesCertificateDate: null,
         invoiceNo:  "",
         invoiceDate: null,
-        cplcVerificationNo: "",
-        cplcDate: null,
-      },
-      delivereeDetails: {
-        registeredName: "",
-        address:  "",
-        cnic: "",
-        receiverName: "",
-        documentDetails: "",
       },
       carDealership: {
-        forDealer: {
-          ownerName:  "",
-          salesmanName:  "",
-          salesmanCardNo: "",
-        },
         seller: {
           name:  "",
           address:"",
@@ -77,10 +62,12 @@ const NewDeliveryLetterForm = () => {
   const isFormValid = () => {
     const requiredFields = [
       'carDetails.registrationNo',
-      'carDetails.registrationDate',
-      'delivereeDetails.registeredName',
-      'delivereeDetails.cnic',
-      'delivereeDetails.receiverName'
+      'carDealership.seller.name',
+      'carDealership.seller.tel',
+      'carDealership.purchaser.tel',
+      'carDealership.purchaser.name',
+      'carDetails.chassisNo',
+      'deliveryLetterDate'
     ]
     
     // the below code simply extracts the registraionNo, cnic, etc from above list, checks it's value in watchedValues, if any are null, returns false
@@ -103,7 +90,6 @@ const NewDeliveryLetterForm = () => {
 
   const formSteps = [
     { component: <CarDetailsForm />, title: "Car Details" },
-    { component: <DelivereeDetailsForm />, title: "Deliveree Details" },
     { component: <DealershipDetailsForm />, title: "Dealership Details" }
   ]
 

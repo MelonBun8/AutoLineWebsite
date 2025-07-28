@@ -45,13 +45,13 @@ const getFilteredDeliveryLetters = asyncHandler( async (req, res) => {
         return res.status(400).json({message:"Missing 'field' or 'value' query parameters for filtering"})
     }
 
-    const allowedFilterFields = ['srNo', 'carDetails.registrationNo', 'delivereeDetails.registeredName', 'delivereeDetails.receiverName']
+    const allowedFilterFields = ['srNo','carDealership.seller.name','carDealership.purchaser.name','carDetails.chassisNo','carDetails.registrationNo']
     if(!allowedFilterFields.includes(field)){
         return res.status(400).json({message: `Invalid filter field ${field} Allowed fields are: ${allowedFilterFields.join(', ')}`})
     }
     
     let queryValue = value; 
-    const caseInsensitiveFields = ['carDetails.registrationNo', 'delivereeDetails.registeredName', 'delivereeDetails.receiverName'];
+    const caseInsensitiveFields = ['carDealership.seller.name','carDealership.purchaser.name','carDetails.chassisNo','carDetails.registrationNo'];
 
     if (caseInsensitiveFields.includes(field)) {
         queryValue = { $regex: new RegExp(value, 'i') }; //regexp for case-insensitivity

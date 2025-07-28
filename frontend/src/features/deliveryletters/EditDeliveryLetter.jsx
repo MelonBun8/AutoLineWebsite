@@ -5,7 +5,7 @@ import useAuth from   '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 import useTitle from '../../hooks/useTitle'
 
-const EditDealReport = () => {
+const EditDeliveryLetter = () => {
 
     useTitle('Edit Letter | Autoline')
     const { id } = useParams()
@@ -39,4 +39,4 @@ const EditDealReport = () => {
     return content
 }
 
-export default EditDealReport
+export default EditDeliveryLetter

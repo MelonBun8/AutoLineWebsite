@@ -12,9 +12,9 @@ const UsersList = () => {
     isError,
     error
   } = useGetUsersQuery('usersList', { // query labels (visible in react and redux devtools)
-    pollingInterval: 60000, // after how long to re-fetch data (in ms)
-    refetchOnFocus: true, // if focus changes to another window, then back to browser window, refetch
-    refetchOnMountOrArgChange: true // re-fetch data if re-mounting component
+    pollingInterval: 120000, // after how long to re-fetch data (in ms)
+    refetchOnFocus: false, // if focus changes to another window, then back to browser window, refetch
+    refetchOnMountOrArgChange: false // re-fetch data if re-mounting component
   })
 
   let content

@@ -23,9 +23,9 @@ const DealReportsList = () => {
     isError,
     error
   } = useGetDealReportsQuery('dealReportsList', {
-    pollingInterval: 60000, 
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true
+    pollingInterval: 120000, 
+    refetchOnFocus: false,
+    refetchOnMountOrArgChange: false
   })
 
   let content
