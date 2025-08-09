@@ -1,7 +1,7 @@
 import ApiSearchBar from '../../components/ApiSearchBar'
 import DeliveryLetter from './DeliveryLetter'
 import useAuth from '../../hooks/useAuth'
-import { useGetDeliveryLettersQuery, useGetFilteredDeliveryLettersQuery } from './deliveryLettersApiSlice'
+import { useGetDeliveryLettersQuery } from './deliveryLettersApiSlice'
 import PulseLoader from 'react-spinners/PulseLoader'
 import useTitle from '../../hooks/useTitle'
 import { useState } from 'react'
@@ -26,37 +26,27 @@ const DeliveryLettersList = () => {
     'Purchaser': 'carDealership.purchaser.name',
   }
 
-  // Default query for all delivery letters
   const {
-    data: allDeliveryLetters,
-    isLoading: isLoadingAll,
-    isSuccess: isSuccessAll,
-    isError: isErrorAll,
-    error: errorAll
-  } = useGetDeliveryLettersQuery('deliveryLettersList', {
-    pollingInterval: 120000,
-    refetchOnFocus: false,
-    refetchOnMountOrArgChange: false,
-    skip: isSearchActive // Skip this query when search is active
-  })
-
-  // Filtered query - only runs when search is active
-  const {
-    data: filteredDeliveryLetters,
-    isLoading: isLoadingFiltered,
-    isSuccess: isSuccessFiltered,
-    isError: isErrorFiltered,
-    error: errorFiltered
-  } = useGetFilteredDeliveryLettersQuery(
+    data: deliveryLetters,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetDeliveryLettersQuery(
+    isSearchActive
+      ? { filters: { field: filterKeyMap[filterChoice], value: searchTerm } }
+      : undefined,
     {
-      field: filterKeyMap[filterChoice],
-      value: searchTerm
-    },
-    {
-      skip: !isSearchActive || filterChoice === '-' || searchTerm.trim() === ''
+      pollingInterval: 120000,
+      refetchOnFocus: false,
+      refetchOnMountOrArgChange: false
     }
   )
-
+  // if(isSearchActive && deliveryLetters){
+  //   console.log(`Number of FILTERED deliveryLetters fetched: ${Object.keys(deliveryLetters).length}`)
+  // } else {
+  //   console.log(`Number of BASE deliveryLetters fetched: ${Object.keys(deliveryLetters).length}`)
+  // }
   // Handle search submission (when user presses Enter or clicks Search)
   const handleSearchSubmit = (searchData) => {
     const { searchTerm: term, filterChoice: choice } = searchData
@@ -81,13 +71,6 @@ const DeliveryLettersList = () => {
     setFilterChoice('-')
   }
 
-  // Determine which data to use and loading states
-  const isLoading = isSearchActive ? isLoadingFiltered : isLoadingAll
-  const isSuccess = isSearchActive ? isSuccessFiltered : isSuccessAll
-  const isError = isSearchActive ? isErrorFiltered : isErrorAll
-  const error = isSearchActive ? errorFiltered : errorAll
-  const deliveryLetters = isSearchActive ? filteredDeliveryLetters : allDeliveryLetters
-
   if (isLoading) {
     return (
       <div className="loader-container">
@@ -104,7 +87,6 @@ const DeliveryLettersList = () => {
 
   if (isSuccess) {
     const { ids, entities } = deliveryLetters
-    
     // Apply role-based filtering
     filteredIds = isManager || isAdmin
       ? [...ids]
@@ -135,7 +117,14 @@ const DeliveryLettersList = () => {
           </thead>
           <tbody>
             {filteredIds.map(id => (
-              <DeliveryLetter key={id} deliveryLetterId={id} />
+              <DeliveryLetter 
+                deliveryLetterId={id}
+                queryArg={
+                  isSearchActive
+                    ? { filters: { field: filterKeyMap[filterChoice], value: searchTerm } }
+                    : undefined
+                }   
+              />
             ))}
           </tbody>
         </table>

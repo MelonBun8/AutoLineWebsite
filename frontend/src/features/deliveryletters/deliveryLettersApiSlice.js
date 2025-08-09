@@ -17,28 +17,39 @@ export const deliveryLettersApiSlice = apiSlice.injectEndpoints({ // define and 
 
     endpoints: builder => ({
         getDeliveryLetters: builder.query({
+            query: ({ filters } = {}) => { 
+                if (filters && Object.keys(filters).length > 0) {
+                    return {
+                        url: '/delivery-letters/search/filter',
+                        params: filters,
+                        validateStatus: (response, result) =>
+                            response.status === 200 && !result.isError
+                    }
+                }
+                return {
+                    url: '/delivery-letters',
+                    validateStatus: (response, result) =>
+                        response.status === 200 && !result.isError
+                }
+            },
 
-            query: () => ({
-                url:'/delivery-letters',
-                validateStatus: (response, result) => { return response.status === 200 && !result.isError } // same isError we use in our components along with isSuccess etc.
-            }),
-
-            transformResponse: responseData => { // transformResponse AFTER query success
+            transformResponse: (responseData) => {
                 const loadedDeliveryLetters = responseData.map(deliveryLetter => {
                     deliveryLetter.id = deliveryLetter._id
                     return deliveryLetter
-                });
+                })
                 return deliveryLettersAdapter.setAll(initialState, loadedDeliveryLetters)
-            
             },
 
-            providesTags: (result, _error, _arg) => { // setup tags AFTER transformResonse applied to add tags to returned delivery letters, and re-fetch / invalidate cache if ANY of those tags change due to any other endpoint too.
+            providesTags: (result) => {
                 if (result?.ids) {
                     return [
                         { type: "DeliveryLetter", id: 'LIST' },
-                        ...result.ids.map( id => ({ type: 'DeliveryLetter', id }) ) // dynamically generate a tag for EACH delivery letter ensuring only the specific updated/ deleted one is dirtied in cache
+                        ...result.ids.map(id => ({ type: 'DeliveryLetter', id }))
                     ]
-                } else return [{ type: "DeliveryLetter", id: "LIST" }] // for empty, invalid array
+                } else {
+                    return [{ type: "DeliveryLetter", id: "LIST" }]
+                }
             }
         }),
 
@@ -64,32 +75,7 @@ export const deliveryLettersApiSlice = apiSlice.injectEndpoints({ // define and 
             }   
 
         }),
-
-        getFilteredDeliveryLetters: builder.query({
-            query: (filters) => ({
-                url: '/delivery-letters/search/filter',
-                params: filters, // auto converted to URL query params by RTKQuery
-                validateStatus: (response, result) => { return response.status === 200 && !result.isError }
-            }),
-
-            transformResponse: (responseData) => {
-                const transformedLetters = responseData.map(deliveryLetter => {
-                    deliveryLetter.id = deliveryLetter._id
-                    return deliveryLetter
-                })
-                return deliveryLettersAdapter.setAll(initialState, transformedLetters)
-            },
-
-            providesTags: (result, _error, _arg) => {
-                if (result?.ids) {
-                    return [
-                        { type: "DeliveryLetter", id: 'LIST' },
-                        ...result.ids.map( id => ({ type: 'DeliveryLetter', id }) ) // dynamically generate a tag for EACH delivery letter ensuring only the specific updated/ deleted one is dirtied in cache
-                    ]
-                } else return [{ type: "DeliveryLetter", id: "LIST" }]
-            }
-        }),
-
+        
         addNewDeliveryLetter: builder.mutation({
             query: ({username, data}) => ({
                 url:`/delivery-letters`,
@@ -133,7 +119,6 @@ export const deliveryLettersApiSlice = apiSlice.injectEndpoints({ // define and 
 export const { // RTKQuery auto-generates these react hooks based on your endpoints for you
     useGetDeliveryLetterQuery,
     useGetDeliveryLettersQuery,
-    useGetFilteredDeliveryLettersQuery,
     useAddNewDeliveryLetterMutation,
     useUpdateDeliveryLetterMutation,
     useDeleteDeliveryLetterMutation

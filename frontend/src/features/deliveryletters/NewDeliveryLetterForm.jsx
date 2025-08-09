@@ -12,13 +12,14 @@ import DealershipDetailsForm from "./formSteps/DealershipDetailsForm"
 
 const NewDeliveryLetterForm = () => {
   const [currFormPage, setCurrFormPage] = useState(0)
+  const [isAutoline, setIsAutoline] = useState(true)
+
   const { username } = useAuth()
   const navigate = useNavigate()
-
+  
   const methods = useForm({
     defaultValues: {
       deliveryLetterDate:null,
-      deliveryLetterTime:null,
       received: false,
       carDetails: {
         registrationNo:"",
@@ -28,10 +29,8 @@ const NewDeliveryLetterForm = () => {
         make: "",
         model: "",
         color:  "",
-        hp: "",
+        hp: 0,
         registrationBookNumber: "",
-        invoiceNo:  "",
-        invoiceDate: null,
       },
       carDealership: {
         seller: {
@@ -60,15 +59,18 @@ const NewDeliveryLetterForm = () => {
 
   // Check if all required fields are filled
   const isFormValid = () => {
-    const requiredFields = [
+    const baseRequiredFields = [
       'carDetails.registrationNo',
-      'carDealership.seller.name',
-      'carDealership.seller.tel',
       'carDealership.purchaser.tel',
       'carDealership.purchaser.name',
       'carDetails.chassisNo',
       'deliveryLetterDate'
-    ]
+    ];
+
+    const requiredFields = isAutoline
+      ? baseRequiredFields
+      : [...baseRequiredFields, 'carDealership.seller.name', 'carDealership.seller.tel'];
+
     
     // the below code simply extracts the registraionNo, cnic, etc from above list, checks it's value in watchedValues, if any are null, returns false
     return requiredFields.every(field => {
@@ -77,20 +79,40 @@ const NewDeliveryLetterForm = () => {
     }) && Object.keys(errors).length === 0
   }
 
-  const onSubmit = async (data) => {
-    try {
-      await addNewDeliveryLetter({username:username, data:data}).unwrap()
-      toast.success("Delivery Letter Created Successfully!")
-      navigate("/dash/delivery-letters")
-    } catch (err) {
-      console.error('Create error:', err)
-      toast.error(err?.data?.message || "Creation failed. Please try again.")
+  const onSubmit = async (data) => { //replacing the structure given here to accommodate the expected structure in the backend.
+  try {
+    const { carDealership, ...rest } = data
+    const seller = carDealership?.seller || {} // extract seller
+    delete carDealership.seller
+
+    const transformedPayload = {
+      username,
+      isAutoline,
+      sellerName: seller.name.toLowerCase() || "",
+      sellerPhone: seller.tel || "",
+      sellerAddress: seller.address || "",
+      sellerCNIC: seller.nic || "",
+      sellerRemarks: seller.remarks || "",
+      carDealership,
+      ...rest
     }
+
+    delete transformedPayload.deliveryLetterDate_time
+    delete transformedPayload.deliveryLetterDate_date
+
+    await addNewDeliveryLetter({ username, data:transformedPayload }).unwrap()
+    toast.success("Delivery Letter Created Successfully!")
+    navigate("/dash/delivery-letters")
+  } catch (err) {
+    console.error('Create error:', err)
+    toast.error(err?.data?.message || "Creation failed. Please try again.")
   }
+}
+
 
   const formSteps = [
     { component: <CarDetailsForm />, title: "Car Details" },
-    { component: <DealershipDetailsForm />, title: "Dealership Details" }
+    { component: <DealershipDetailsForm isAutoline={isAutoline}/>, title: "Dealership Details" }
   ]
 
   const formPageLoader = () => {
@@ -103,7 +125,7 @@ const NewDeliveryLetterForm = () => {
   const canSubmit = isFormValid() && !isLoading
   
   return (
-    <div className="form-container">
+    <div className="form-container">  
       {/* Header with delete button */}
       <div className="form-header">
         <h2 className="form-title">Create New Delivery Letter</h2>
@@ -119,6 +141,18 @@ const NewDeliveryLetterForm = () => {
 
           {/* Form content */}
           {formPageLoader()}
+
+          <label htmlFor="persist" className="form__persist">
+              <input
+                  type = "checkbox"
+                  className = "form__checkbox"
+                  id="persist"
+                  onChange = {(e) => {setIsAutoline(e.target.checked)}} // no circular dependency error since the event and handler function run EBFORE re-render, and e (event) reflects the NEW checked value, not old, pre-click value
+                  checked = {isAutoline}  
+              />
+              Is the seller Autoline?
+          </label>
+
 
           {/* Navigation and Submit */}
           <div className="form-nav">

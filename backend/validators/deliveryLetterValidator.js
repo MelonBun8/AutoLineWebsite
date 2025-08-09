@@ -19,18 +19,15 @@ const deliveryLetterSchema = Joi.object({
         // 'registrationNo': Required string.
         registrationNo: Joi.string().required(),
         // 'registrationDate': Required date, expecting ISO 8601 format (e.g., "2025-01-15" or "2025-01-15T10:30:00Z").
-        registrationDate: Joi.date().iso().required(),
+        registrationDate: Joi.date().iso().required().allow(null),
         // Optional string fields for car details, allowing empty strings.
         chassisNo: Joi.string().required(),
         engineNo: Joi.string().optional().allow(''),
         make: Joi.string().optional().allow(''),
         model: Joi.string().optional().allow(''),
         color: Joi.string().optional().allow(''),
-        hp: Joi.string().optional().allow(''),
+        hp: Joi.number().optional().allow(''),
         registrationBookNumber: Joi.string().optional().allow(''),
-        invoiceNo: Joi.string().optional().allow(''),
-        // 'invoiceDate': Optional date, ISO format.
-        invoiceDate: Joi.date().iso().optional().allow(null),
     }).required(), // Ensures the entire 'carDetails' object is present and validated
 
     // 'carDealership' object:
@@ -38,23 +35,13 @@ const deliveryLetterSchema = Joi.object({
     carDealership: Joi.object({
 
         // 'seller' object: Optional.
-        seller: Joi.object({
-            name: Joi.string().optional().allow(''),
-            address: Joi.string().optional().allow(''),
-            tel: Joi.number().required(),
-            nic: Joi.string()
-            .optional()
-            .messages({ // Custom error message for pattern mismatch
-                'string.pattern.base': 'CNIC must be 13 digits long and contain only numbers.'
-            }).allow(''),
-            remarks: Joi.string().optional().allow(''),
-        }).optional(),
+        sellerId: Joi.string().hex().length(24).required(),
         // 'purchaser' object: Optional.
         purchaser: Joi.object({
 
             name: Joi.string().optional().allow(''),
             address: Joi.string().optional().allow(''),
-            tel: Joi.number().required(),
+            tel: Joi.string().required(),
             nic: Joi.string()
             .optional()
             .messages({ // Custom error message for pattern mismatch

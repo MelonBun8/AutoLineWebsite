@@ -19,6 +19,8 @@
     "express": "^4.21.2",
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^7.5.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^12.9.0",
     "joi": "^17.13.3",
     "joi-objectid": "^4.0.2",
     "jsonwebtoken": "^9.0.2",

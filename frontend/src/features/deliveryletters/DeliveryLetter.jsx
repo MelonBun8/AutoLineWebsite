@@ -5,15 +5,25 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useGetDeliveryLettersQuery } from './deliveryLettersApiSlice'
 
-const DeliveryLetter = ({ deliveryLetterId }) => {
+const DeliveryLetter = ({ deliveryLetterId, queryArg }) => {
     
     const navigate = useNavigate()
-    const { deliveryLetter } = useGetDeliveryLettersQuery("deliveryLettersList", { // deliveryLettersList is a new query tag used by this and other components. It is a tag/key for THIS INSTANCE of deliveryLettersList !!! {type: 'DeliveryLetter', id: 'LIST'} is the abstract tag used by the invalidation system to trigger refetches when your mutations change data related to that list. !!!
+    console.log(`CURRENTLY HERE AT DELIVERY LETTER COMPONENT WITH THE ID: ${deliveryLetterId}`)
+    
+    const { deliveryLetter } = useGetDeliveryLettersQuery(queryArg, { // deliveryLettersList is a new query tag used by this and other components. It is a tag/key for THIS INSTANCE of deliveryLettersList !!! {type: 'DeliveryLetter', id: 'LIST'} is the abstract tag used by the invalidation system to trigger refetches when your mutations change data related to that list. !!!
 
         selectFromResult: ({ data }) => ({ // remember how your deliveryLettersAdapter sets up initialState with data object holding ids array and entities object within
             deliveryLetter: data?.entities[deliveryLetterId] // the optional chaining ?. is for if entities undefined (still loading)
         }),
     })
+
+    // const { deliveryLetter } = useGetDeliveryLettersQuery(undefined, {
+    //     selectFromResult: ({ data }) => ({
+    //         deliveryLetter: data?.entities[deliveryLetterId]
+    //     }),
+    // })
+
+    console.log(`Found a deliveryLetter! ${deliveryLetter}`)
 
     if(deliveryLetter){
         const created = new Date(deliveryLetter.createdAt).toLocaleString('en-US', {day:'numeric', month:'long'}) // why not toLocale Date string

@@ -36,8 +36,6 @@ const useExportDeliveryLetter = () => {
         ['Color', deliveryLetter?.carDetails?.color],
         ['HP', deliveryLetter?.carDetails?.hp],
         ['Reg Book No', deliveryLetter?.carDetails?.registrationBookNumber],
-        ['Invoice No', deliveryLetter?.carDetails?.invoiceNo],
-        ['Invoice Date', deliveryLetter?.carDetails?.invoiceDate?.slice(0, 10)],
         
         // COLUMN 2 (right)
         ['Dealer Owner', deliveryLetter?.carDealership?.forDealer?.ownerName],

@@ -21,6 +21,8 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
   const methods = useForm({
     defaultValues: {
       deliveryLetterDate: deliveryLetter?.deliveryLetterDate?.slice(0, 10) || null,
+      deliveryLetterDate_date: deliveryLetter?.deliveryLetterDate?.slice(0, 10) || null,
+      deliveryLetterDate_time: deliveryLetter?.deliveryLetterDate?.slice(11, 16) || null,
       received: deliveryLetter?.received || false,
       carDetails: {
         registrationNo: deliveryLetter?.carDetails?.registrationNo || "",
@@ -30,18 +32,16 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
         make: deliveryLetter?.carDetails?.make || "",
         model: deliveryLetter?.carDetails?.model || "",
         color: deliveryLetter?.carDetails?.color || "",
-        hp: deliveryLetter?.carDetails?.hp || "",
+        hp: deliveryLetter?.carDetails?.hp || 0,
         registrationBookNumber: deliveryLetter?.carDetails?.registrationBookNumber || "",
-        invoiceNo: deliveryLetter?.carDetails?.invoiceNo || "",
-        invoiceDate: deliveryLetter?.carDetails?.invoiceDate?.slice(0, 10) || null,
       },
       carDealership: {
         seller: {
-          name: deliveryLetter?.carDealership?.seller?.name || "",
-          address: deliveryLetter?.carDealership?.seller?.address || "",
-          tel: deliveryLetter?.carDealership?.seller?.tel || "",
-          nic: deliveryLetter?.carDealership?.seller?.nic || "",
-          remarks: deliveryLetter?.carDealership?.seller?.remarks || "",
+          name: deliveryLetter?.carDealership?.sellerId?.name || "",
+          address: deliveryLetter?.carDealership?.sellerId?.address || "",
+          tel: deliveryLetter?.carDealership?.sellerId?.tel || "",
+          nic: deliveryLetter?.carDealership?.sellerId?.nic || "",
+          remarks: deliveryLetter?.carDealership?.sellerId?.remarks || "",
         },
         purchaser: {
           name: deliveryLetter?.carDealership?.purchaser?.name || "",
@@ -115,7 +115,7 @@ const EditDeliveryLetterForm = ({ deliveryLetter }) => {
 
   const formSteps = [
     { component: <CarDetailsForm />, title: "Car Details" },
-    { component: <DealershipDetailsForm />, title: "Dealership Details" }
+    { component: <DealershipDetailsForm isEditMode={true} />, title: "Dealership Details" }
   ]
 
   const formPageLoader = () => {

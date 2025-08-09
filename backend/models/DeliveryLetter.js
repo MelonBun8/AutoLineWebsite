@@ -16,7 +16,6 @@ const deliveryLetterSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    // membershipNo: String,
     carDetails: {
         chassisNo: {
             type: String,
@@ -28,34 +27,14 @@ const deliveryLetterSchema = new mongoose.Schema({
         make: String,
         model: String,
         color: String,
-        hp: String,
+        hp: Number,
         registrationBookNumber: String,
-        invoiceNo: String,
-        invoiceDate: Date,
     },
-    // delivereeDetails: {
-    //     registeredName: String,
-    //     address: String,
-    //     cnic: String,
-    // },
     carDealership: {
-        // forDealer: {
-        //     ownerName: String,
-        //     salesmanName: String,
-        //     salesmanCardNo: String,
-        // },
-        seller: {
-            name: {
-                type: String,
-                required: true
-            },
-            address: String,
-            tel: {
-                type: String,
-                required: true
-            },
-            nic: String,
-            remarks: String
+        sellerId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Seller'
         },
         purchaser: {
             name: {
@@ -67,7 +46,6 @@ const deliveryLetterSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            address: String,
             nic: String
         }
     } 
@@ -77,6 +55,7 @@ const deliveryLetterSchema = new mongoose.Schema({
 });
 
 deliveryLetterSchema.index({ srNo: 1 }); // the 1 is for ascending values
+deliveryLetterSchema.index({ deliveryLetterDate: -1 }); // Descending for recent first / indexing for faster sorting
 
 deliveryLetterSchema.plugin(AutoIncrement, {
     inc_field: 'srNo',

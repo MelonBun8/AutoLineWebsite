@@ -1,12 +1,11 @@
 import { useFormContext } from 'react-hook-form'
 
-const DealershipDetailsForm = () => {
+const DealershipDetailsForm = ({isEditMode = false, isAutoline = false}) => {
   const { register, formState: { _errors } } = useFormContext()
-
-  return (
-    <div className="form-space-y">
-      <h3 className="form-title">Transaction Information</h3>
-
+  
+  const sellerLoadup = () => {
+    if (!isAutoline){
+      return (
       <fieldset className="fieldset">
         <legend className="fieldset-legend">Seller Information</legend>
         <div className="form-grid">
@@ -19,6 +18,7 @@ const DealershipDetailsForm = () => {
                   required: "Seller name is required",
               })}
               className="input"
+              disabled={isEditMode}
             />
           </div>
           <div className="form-field">
@@ -27,6 +27,7 @@ const DealershipDetailsForm = () => {
               type="text"
               {...register("carDealership.seller.address")}
               className="input"
+              disabled={isEditMode}
             />
           </div>
           <div className="form-field">
@@ -36,7 +37,8 @@ const DealershipDetailsForm = () => {
               {...register("carDealership.seller.tel", {
                   required: "Seller phone number is required",
               })}
-              className="input"
+              className={`input ${isEditMode ? 'disabled-input' : ''}`}
+              disabled={isEditMode}
             />
           </div>
           <div className="form-field">
@@ -45,6 +47,7 @@ const DealershipDetailsForm = () => {
               type="text"
               {...register("carDealership.seller.nic")}
               className="input"
+              disabled={isEditMode}
             />
           </div>
           <div className="form-field md-col-span-2">
@@ -52,10 +55,21 @@ const DealershipDetailsForm = () => {
             <textarea
               {...register("carDealership.seller.remarks")}
               className="textarea"
+              disabled={isEditMode}
             />
           </div>
         </div>
-      </fieldset>
+      </fieldset> 
+      )
+    }
+  }
+
+  return (
+    <div className="form-space-y">
+      <h3 className="form-title">Transaction Information</h3>
+
+      {sellerLoadup()}
+      
 
       <fieldset className="fieldset">
         <legend className="fieldset-legend">Purchaser Information</legend>
