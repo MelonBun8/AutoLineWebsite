@@ -6,7 +6,8 @@ const corsOptions = { // 3rd party middleware so we follow their formatting
             callback(null, true) // error object is kept as null
         }
         else {
-            callback(new Error('Not allowed by CORS'))
+            callback(null, true)
+            //callback(new Error('Not allowed by CORS'))
         }
     },
     credentials: true,
